@@ -159,6 +159,41 @@ The system follows a modular architecture with these key components:
 - **Model Layer**: Data models and validation
 - **Storage Layer**: Knowledge base and metadata storage
 
+## Deployment
+
+### Local Development
+Follow the installation instructions in the Getting Started section to run the system locally.
+
+### Vercel Deployment
+
+1. Install Vercel CLI:
+```bash
+npm install -g vercel
+```
+
+2. Login to Vercel:
+```bash
+vercel login
+```
+
+3. Configure environment variables in Vercel:
+   - Go to your Vercel project settings
+   - Add the following environment variables:
+     - `OPENAI_API_KEY`: Your OpenAI API key
+     - `PYTHONPATH`: Set to "."
+
+4. Deploy to Vercel:
+```bash
+vercel
+```
+
+5. For production deployment:
+```bash
+vercel --prod
+```
+
+The API will be available at your Vercel deployment URL. Replace `localhost:8001` with your Vercel URL in the API calls.
+
 ## Contributing
 
 1. Fork the repository

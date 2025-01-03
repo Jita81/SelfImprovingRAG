@@ -1,0 +1,227 @@
+{
+  "knowledge_items": [
+    {
+      "id": "KI-1",
+      "type": "concept",
+      "content": "Azure DevOps Epic: A large body of work that can be broken down into a number of smaller stories, or 'Features'. This includes handling of empty epics which should result in a pertinent response.",
+      "relationships": [],
+      "validation_criteria": [
+        "VR-9"
+      ]
+    },
+    {
+      "id": "KI-2",
+      "type": "concept",
+      "content": "Features: Subdivisions of an Epic, each representing a distinct functionality or component.",
+      "relationships": [
+        "KI-1",
+        "KI-11"
+      ],
+      "validation_criteria": [
+        "VR-1",
+        "VR-2"
+      ]
+    },
+    {
+      "id": "KI-3",
+      "type": "concept",
+      "content": "SOLID Principles: A set of design principles for making software designs more understandable, flexible, and maintainable.",
+      "relationships": [
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-3"
+      ]
+    },
+    {
+      "id": "KI-4",
+      "type": "concept",
+      "content": "Dependencies: Relationships between features where one requires the presence or completion of another.",
+      "relationships": [
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-4"
+      ]
+    },
+    {
+      "id": "KI-5",
+      "type": "best_practice",
+      "content": "Each feature should be developed to be independently implementable to promote modularity.",
+      "relationships": [
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-1"
+      ]
+    },
+    {
+      "id": "KI-6",
+      "type": "best_practice",
+      "content": "Prioritize coverage of all epic requirements when breaking them down into features.",
+      "relationships": [
+        "KI-1",
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-2"
+      ]
+    },
+    {
+      "id": "KI-7",
+      "type": "rule",
+      "content": "Each feature should clearly identify any dependencies on other features.",
+      "relationships": [
+        "KI-2",
+        "KI-4"
+      ],
+      "validation_criteria": [
+        "VR-4"
+      ]
+    },
+    {
+      "id": "KI-8",
+      "type": "pitfall",
+      "content": "Avoid blurring separation of concerns. Each feature should address a single, well-defined aspect of functionality.",
+      "relationships": [
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-1",
+        "VR-5"
+      ]
+    },
+    {
+      "id": "VR-6",
+      "description": "Each feature should have clear acceptance criteria attached to it.",
+      "content": "Each feature should have clear and practically achievable acceptance criteria attached to it."
+    },
+    {
+      "id": "VR-7",
+      "description": "The application should be able to handle edge cases and uncommon situations without failing."
+    },
+    {
+      "id": "VR-8",
+      "description": "Clear error messages should be shown for exceptional inputs and behavior on boundary values should be appropriate."
+    },
+    {
+      "id": "KI-9",
+      "type": "concept",
+      "content": "Error and Edge Case Handling: The system's behavior when exposed to uncommon inputs or situations.",
+      "relationships": [
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-7",
+        "VR-8"
+      ]
+    },
+    {
+      "id": "VR-6",
+      "description": "Each feature should have clear acceptance criteria attached to it."
+    },
+    {
+      "id": "VR-9",
+      "description": "The system should handle empty epics appropriately, without breaking or producing irrelevant results."
+    },
+    {
+      "id": "KI-10",
+      "type": "concept",
+      "content": "Empty Epic Handling: The approach towards situations where an empty epic is provided. This must be dealt gracefully without breaking the system or producing irrelevant results.",
+      "relationships": [
+        "KI-1"
+      ],
+      "validation_criteria": [
+        "VR-9"
+      ]
+    },
+    {
+      "id": "KI-11",
+      "type": "concept",
+      "content": "Cross-Cutting Concerns: Aspects of a program that affect other concerns, including scenarios where multiple cross-cutting concerns affect the same feature. These often cannot be cleanly decomposed from the rest of the system in both the design and implementation, and should not be duplicated within use-cases.",
+      "relationships": [
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-10",
+        "VR-11",
+        "VR-14"
+      ]
+    },
+    {
+      "id": "VR-10",
+      "description": "Cross-cutting concerns like security requirements should not be duplicated across multiple features."
+    },
+    {
+      "id": "VR-11",
+      "description": "Test cases should cover the scenario where cross-cutting concerns are identified and treated as separate architectural aspects."
+    },
+    {
+      "id": "KI-12",
+      "type": "best_practice",
+      "content": "Consider cross-cutting concerns as distinct features and address handling of these concerns uniformly across the system.",
+      "relationships": [
+        "KI-2",
+        "KI-11"
+      ],
+      "validation_criteria": [
+        "VR-10",
+        "VR-11"
+      ]
+    },
+    {
+      "id": "KI-13",
+      "type": "concept",
+      "content": "Handling of Multiple Cross-Cutting Concerns: Strategies and considerations when a single feature is affected by multiple cross-cutting concerns. This involves a careful balance to ensure the concerns are addressed without leading to high coupling, needless complexity or duplication.",
+      "relationships": [
+        "KI-2",
+        "KI-11"
+      ],
+      "validation_criteria": [
+        "VR-12",
+        "VR-13",
+        "VR-14"
+      ]
+    },
+    {
+      "id": "KI-021",
+      "type": "concept",
+      "content": "Test cases should cover scenarios where multiple cross-cutting concerns are affecting the same feature and are handled as separate architectural aspects.",
+      "relationships": [],
+      "validation_criteria": []
+    },
+    {
+      "type": "best_practice",
+      "content": "Separation of Cross-Cutting Concerns: Cross-cutting concerns should be treated as distinct architectural aspects and not be duplicated across use-cases. Consider each as a separate feature and handle uniformly across the system.",
+      "relationships": [
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-11",
+        "VR-14"
+      ]
+    }
+  ],
+  "validation_rules": [
+    {
+      "id": "VR-1",
+      "description": "A valid Feature is independently implementable and doesn't require other features to function."
+    },
+    {
+      "id": "VR-2",
+      "description": "All Epic requirements must be covered in the breakdown to Features."
+    },
+    {
+      "id": "VR-3",
+      "description": "The feature design should follow SOLID principles."
+    },
+    {
+      "id": "VR-4",
+      "description": "Any dependencies between features must be clearly identified."
+    },
+    {
+      "id": "VR-5",
+      "description": "A valid Feature addresses a single, well-defined aspect of functionality and maintains separation of concerns."
+    }
+  ]
+}
