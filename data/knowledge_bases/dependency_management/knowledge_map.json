@@ -1,0 +1,192 @@
+{
+  "knowledge_items": [
+    {
+      "id": "KI-1",
+      "type": "concept",
+      "content": "Epic: A large body of work that can be broken down into a number of smaller tasks, or features.",
+      "relationships": [
+        "KI-2",
+        "KI-3"
+      ],
+      "validation_criteria": [
+        "VR-1"
+      ]
+    },
+    {
+      "id": "KI-2",
+      "type": "concept",
+      "content": "Feature: A smaller task that contributes to the completion of an epic. Each feature can have dependencies on other features.",
+      "relationships": [
+        "KI-1",
+        "KI-3"
+      ],
+      "validation_criteria": [
+        "VR-1"
+      ]
+    },
+    {
+      "id": "KI-3",
+      "type": "concept",
+      "content": "Dependencies: The relationships between features, where one feature cannot be started or completed until another has been finished. This may involve direct or indirect dependencies, the latter of which can take the form of indirect circular dependencies. An understanding of both types, especially indirect circular dependencies, is crucial for efficient dependency management.",
+      "relationships": [
+        "KI-1",
+        "KI-2",
+        "KI-new1"
+      ],
+      "validation_criteria": [
+        "VR-2",
+        "VR-3"
+      ]
+    },
+    {
+      "id": "KI-4",
+      "type": "rule",
+      "content": "Every feature must have a clear and resolvable dependency. This can be validated by applying validation rule VR-4.",
+      "relationships": [],
+      "validation_criteria": [
+        "VR-4"
+      ]
+    },
+    {
+      "id": "KI-5",
+      "type": "best_practice",
+      "content": "Avoid creating circular dependencies whether direct or indirect, where a chain or sequence of features depend on each other in a loop. Being aware of both types is crucial for efficient dependency management.",
+      "relationships": [
+        "KI-3"
+      ],
+      "validation_criteria": [
+        "VR-2"
+      ]
+    },
+    {
+      "id": "KI-6",
+      "type": "pitfall",
+      "content": "Failure to validate dependencies can result in a deadlock, where certain features cannot be started due to unresolved dependencies.",
+      "relationships": [
+        "KI-2",
+        "KI-3"
+      ],
+      "validation_criteria": [
+        "VR-2"
+      ]
+    },
+    {
+      "id": "KI-7",
+      "type": "best_practice",
+      "content": "When visualizing dependency relationships, ensure each dependency link is clearly visible and colored to indicate the status of dependency resolution.",
+      "relationships": [
+        "KI-2",
+        "KI-3"
+      ],
+      "validation_criteria": [
+        "VR-new"
+      ]
+    },
+    {
+      "id": "VR-4",
+      "description": "Check that all dependencies are resolvable. Any detected circular dependencies should be resolved or eliminated.",
+      "content": "Check that all dependencies are resolvable and detect circular dependencies. Any circular dependency should either be resolved or eliminated."
+    },
+    {
+      "id": "KI-new",
+      "type": "concept",
+      "content": "Resolving Circular Dependencies: Given a detected circular dependency among features, it is essential to construct a pathway that removes the circular dependency, ensuring that every feature can be completed without looping back on a feature in the same chain of dependencies.",
+      "relationships": [
+        "KI-2",
+        "KI-3"
+      ],
+      "validation_criteria": [
+        "VR-4",
+        "VR-new"
+      ]
+    },
+    {
+      "id": "VR-new",
+      "description": "For visualized dependency relationships, it should clearly represent the dependencies including circular ones, and their statuses of completion, activation, and blockage should be understandable."
+    },
+    {
+      "id": "VR-new",
+      "description": "For visualized dependency relationships, it should clearly represent the dependencies including circular ones, and their statuses of completion, activation, and blockage should be understandable."
+    },
+    {
+      "id": "TC-new",
+      "title": "Test for resolving and visualizing circular dependencies",
+      "description": "This test case is added to cover the scenario of 'KI-new' and to apply the validation rule 'VR-3' and 'VR-new'. It ensures that the system can represent dependencies, including circular ones, clearly in its visualization and suggest ways to resolve any detected circular dependencies.",
+      "complexity": "high",
+      "validation_steps": [
+        "Create a scenario with circular dependencies between features",
+        "Ensure the system accurately visualizes the dependencies and clear instructions for resolving circular dependencies"
+      ]
+    },
+    {
+      "id": "KI-new1",
+      "type": "concept",
+      "content": "Indirect Circular Dependencies: This occurs when a sequence of dependencies leads back to the original feature, creating a loop of dependencies. For instance, in a feature chain A->B->C->A, A indirectly depends on itself through B and C.",
+      "relationships": [
+        "KI-2",
+        "KI-3"
+      ],
+      "validation_criteria": [
+        "VR-2",
+        "VR-new"
+      ]
+    },
+    {
+      "id": "KI-new2",
+      "type": "best_practice",
+      "content": "Avoid creating indirect circular dependencies where a sequence of features depend on each other in a loop. Detection and management of cases like these can be complex. If identified, the indirect circular dependency should either be resolved or eliminated.",
+      "relationships": [
+        "KI-2",
+        "KI-3",
+        "KI-new1"
+      ],
+      "validation_criteria": [
+        "VR-2",
+        "VR-new"
+      ]
+    },
+    {
+      "id": "KI-new3",
+      "type": "concept",
+      "content": "Indirect Circular Dependency Resolution: In case of indirect circular dependencies, it's critical to identify a pathway for resolution that removes the circular dependency without disrupting the functionality of the features involved. This often requires deep scrutiny of the dependencies and an understanding of the impact of changes.",
+      "relationships": [
+        "KI-2",
+        "KI-3",
+        "KI-1"
+      ],
+      "validation_criteria": [
+        "VR-4"
+      ]
+    },
+    {
+      "id": "KI-new",
+      "type": "concept",
+      "content": "Indirect Circular Dependencies: These are circular dependencies that involve more than two features where a loop of dependencies occurs not directly, but across a series of features. Understanding and identifying indirect circular dependencies is crucial for efficient dependency management.",
+      "relationships": [
+        "KI-2",
+        "KI-3"
+      ],
+      "validation_criteria": [
+        "VR-new"
+      ]
+    },
+    {
+      "id": "VR-new",
+      "description": "Validation should ensure there are no direct or indirect circular dependencies within the feature."
+    }
+  ],
+  "validation_rules": [
+    {
+      "id": "VR-1",
+      "description": "Each feature should be capable of being broken down into individual tasks that can be completed independently."
+    },
+    {
+      "id": "VR-2",
+      "description": "Every dependency within the feature should be resolvable \u2013 there should be no circular dependencies."
+    },
+    {
+      "id": "VR-3",
+      "description": "Every feature should be connected to at least one epic or another feature, and be part of the dependency chain."
+    }
+  ]
+}

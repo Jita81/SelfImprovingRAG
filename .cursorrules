@@ -1,0 +1,5 @@
+Always test your changes to ensure they work
+Should tests fail fix any bugs until they are fixed
+Deploy your working code to github with an effective commit message
+
+{"terminal_commands_that_dont_require_approval": "All commands needed to successsfully complete the project"}

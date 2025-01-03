@@ -1,0 +1,173 @@
+{
+  "test_cases": [
+    {
+      "id": "TC1",
+      "title": "Verify Stakeholder Identification",
+      "description": "Test the identification of all relevant stakeholders to ensure no overlooked entities.",
+      "complexity_level": 1,
+      "input": {
+        "project_description": "Development of an online bookstore",
+        "identified_stakeholders": [
+          "Customers",
+          "Business Owners",
+          "Developers",
+          "Marketing Team"
+        ]
+      },
+      "validation_rules": [
+        "All identified stakeholders should be relevant to the project domain",
+        "No key stakeholder group is missing from the list"
+      ]
+    },
+    {
+      "id": "TC2",
+      "title": "Validate Functional Requirement Specification",
+      "description": "Ensure that functional requirements are specified clearly and are actionable.",
+      "complexity_level": 2,
+      "input": {
+        "requirement_description": "The system should allow users to add books to a shopping cart."
+      },
+      "validation_rules": [
+        "The requirement must be written in a clear and unambiguous language",
+        "The requirement must be verifiable and testable"
+      ]
+    },
+    {
+      "id": "TC3",
+      "title": "Check Non-Functional Requirement Quantification",
+      "description": "Test the definition and measurement of non-functional requirements.",
+      "complexity_level": 4,
+      "input": {
+        "non_functional_requirement": "The system should have a response time of less than 2 seconds."
+      },
+      "validation_rules": [
+        "The non-functional requirement must be quantifiable",
+        "The non-functional requirement must have a clear metric for measurement"
+      ]
+    },
+    {
+      "id": "TC4",
+      "title": "Assess Requirements Elicitation Techniques",
+      "description": "Evaluate the effectiveness of requirements elicitation techniques used.",
+      "complexity_level": 2,
+      "input": {
+        "techniques_used": [
+          "Interviews",
+          "Surveys"
+        ],
+        "stakeholders_involved": [
+          "Customers",
+          "Business Owners"
+        ]
+      },
+      "validation_rules": [
+        "The techniques used should be appropriate for the stakeholders involved",
+        "The elicitation should cover all relevant aspects of the requirements"
+      ]
+    },
+    {
+      "id": "TC5",
+      "title": "Verify Use Case Modeling",
+      "description": "Test the completeness and accuracy of use case models.",
+      "complexity_level": 2,
+      "input": {
+        "use_case_diagram": "A diagram representing the interaction between users and the system for purchasing a book."
+      },
+      "validation_rules": [
+        "The use case diagram must include all actors and their interactions with the system",
+        "The use case diagram must be consistent with the functional requirements"
+      ]
+    },
+    {
+      "id": "TC6",
+      "title": "Validate Requirements Traceability",
+      "description": "Ensure that each requirement is properly documented and traceable back to its source.",
+      "complexity_level": 3,
+      "input": {
+        "requirement_id": "REQ-101",
+        "source_documentation": "Stakeholder interview notes",
+        "related_requirements": [
+          "REQ-102",
+          "REQ-103"
+        ]
+      },
+      "validation_rules": [
+        "The requirement must be linked to its elicitation source",
+        "The requirement must be traceable to related requirements and design elements"
+      ]
+    },
+    {
+      "id": "TC7",
+      "title": "Check for Scope Creep",
+      "description": "Identify any uncontrolled changes or continuous growth in the project's scope.",
+      "complexity_level": 3,
+      "input": {
+        "initial_scope_document": "Project scope defined in the initial phase",
+        "current_project_status": "List of features currently being developed"
+      },
+      "validation_rules": [
+        "Features being developed must align with the initial project scope",
+        "Any additional features must have proper justification and documentation"
+      ]
+    },
+    {
+      "id": "TC8",
+      "title": "Assess Requirements Evolution Management",
+      "description": "Evaluate the process for managing changes to requirements over time.",
+      "complexity_level": 4,
+      "input": {
+        "change_request": "Addition of a new payment method to the system",
+        "impact_analysis": "Analysis of how the change will affect existing requirements and system design"
+      },
+      "validation_rules": [
+        "The change request must be documented and justified",
+        "The impact analysis must be thorough and consider all affected components"
+      ]
+    }
+  ],
+  "validation_rules": {
+    "basic_format": {
+      "required_elements": [
+        "role",
+        "goal",
+        "benefit"
+      ],
+      "format_pattern": "As an? (.+), I want (.+) so that (.+)"
+    },
+    "invest_criteria": {
+      "independence_keywords": [
+        "after",
+        "before",
+        "depends",
+        "following"
+      ],
+      "negotiable_keywords": [
+        "must",
+        "shall",
+        "exactly"
+      ],
+      "value_keywords": [
+        "so that"
+      ],
+      "size_limits": {
+        "min_words": 10,
+        "max_words": 50
+      }
+    },
+    "acceptance_criteria": {
+      "format_pattern": "Given (.+) When (.+) Then (.+)",
+      "min_criteria": 2,
+      "max_criteria": 5,
+      "min_section_length": 5
+    },
+    "story_splitting": {
+      "min_stories": 2,
+      "max_stories": 5,
+      "min_common_words": 3
+    },
+    "refinement": {
+      "min_detail_length": 10,
+      "must_add_detail": true
+    }
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "knowledge_items": [
+    {
+      "id": "KI-1",
+      "type": "concept",
+      "content": "Epic: A large body of work that can be broken down into a number of smaller tasks, or stories",
+      "relationships": [
+        "VR-11"
+      ],
+      "validation_criteria": [
+        "VR-7"
+      ]
+    },
+    {
+      "id": "KI-2",
+      "type": "concept",
+      "content": "Feature: A distinguishable aspect of a system that fulfills a requirement and contributes to an Epic",
+      "relationships": [
+        "TC-1",
+        "TC-2",
+        "TC-3",
+        "TC-4",
+        "TC-5",
+        "TC-6"
+      ],
+      "validation_criteria": [
+        "VR-1",
+        "VR-2",
+        "VR-3",
+        "VR-4",
+        "VR-5",
+        "VR-6"
+      ]
+    },
+    {
+      "id": "KI-3",
+      "type": "concept",
+      "content": "Technical Dependencies: The requirement for a feature to function depends on the existence or functioning of another feature",
+      "relationships": [
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-8"
+      ]
+    },
+    {
+      "id": "KI-4",
+      "type": "concept",
+      "content": "Non-functional Requirements: Aspects of the system that do not perform a specific function but define the system's behavior",
+      "relationships": [
+        "KI-2",
+        "TC-11"
+      ],
+      "validation_criteria": [
+        "VR-9"
+      ]
+    },
+    {
+      "id": "KI-5",
+      "type": "rule",
+      "content": "Features should always support the epic's overall goals",
+      "relationships": [
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-4"
+      ]
+    },
+    {
+      "id": "KI-6",
+      "type": "best_practice",
+      "content": "Clearly articulate the boundaries and scope for each feature",
+      "relationships": [
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-2"
+      ]
+    },
+    {
+      "id": "KI-7",
+      "type": "pitfall",
+      "content": "Avoid defining features that are not independently valuable",
+      "relationships": [
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-1"
+      ]
+    },
+    {
+      "id": "VR-7",
+      "description": "Epics must have defined validation rules"
+    },
+    {
+      "id": "VR-8",
+      "description": "Technical Dependencies must be validated"
+    },
+    {
+      "id": "VR-9",
+      "description": "Non-functional Requirements must have specific validation rules"
+    },
+    {
+      "id": "KI-8",
+      "type": "concept",
+      "content": "Edge Cases: Considering scenarios that occur only at extreme operating parameters",
+      "relationships": [
+        "KI-1",
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-10"
+      ]
+    },
+    {
+      "id": "VR-10",
+      "description": "Edge cases must be considered in the knowledge map"
+    },
+    {
+      "id": "VR-11",
+      "description": "Each validation rule must be related to a test case"
+    },
+    {
+      "id": "KI-9",
+      "type": "concept",
+      "content": "Validation Rule and Test Case Relation: Each validation rule must be linked to a test case to support proper verification",
+      "relationships": [
+        "VR-11"
+      ],
+      "validation_criteria": [
+        "VR-11"
+      ]
+    },
+    {
+      "id": "KI-10",
+      "type": "concept",
+      "content": "Test Case and Knowledge Item Relation: Each test case must be linked to a validation rule in a Knowledge Item to ensure accurate testing",
+      "relationships": [
+        "TC-1",
+        "TC-2",
+        "TC-3",
+        "TC-4",
+        "TC-5",
+        "TC-6",
+        "TC-7",
+        "TC-8",
+        "TC-9",
+        "TC-10",
+        "TC-11"
+      ],
+      "validation_criteria": [
+        "VR-9"
+      ]
+    },
+    {
+      "id": "VR-12",
+      "description": "Test cases must have defined validation rules",
+      "relationships": [
+        "TC-7",
+        "TC-8",
+        "TC-9",
+        "TC-10",
+        "TC-11"
+      ],
+      "validation_criteria": []
+    },
+    {
+      "id": "KI-11",
+      "type": "concept",
+      "content": "Validation Rule and Test Case Relation: Each test case must be linked to a validation rule to support proper verification",
+      "relationships": [
+        "VR-12"
+      ],
+      "validation_criteria": [
+        "VR-11"
+      ]
+    }
+  ],
+  "validation_rules": [
+    {
+      "id": "VR-1",
+      "description": "Features must be independently valuable and deliverable"
+    },
+    {
+      "id": "VR-2",
+      "description": "Features must have a clearly defined scope and boundaries"
+    },
+    {
+      "id": "VR-3",
+      "description": "Features must have a clear estimation and priortization"
+    },
+    {
+      "id": "VR-4",
+      "description": "Features must always support the epic's overall goals"
+    },
+    {
+      "id": "VR-5",
+      "description": "Features should consider technical dependencies"
+    },
+    {
+      "id": "VR-6",
+      "description": "Features should account for non-functional requirements"
+    }
+  ]
+}

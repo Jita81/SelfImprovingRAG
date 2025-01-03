@@ -1,0 +1,125 @@
+{
+    "nodes": {
+        "us_basics": {
+            "id": "us_basics",
+            "title": "User Story Basics",
+            "description": "Fundamental concepts of user stories including the basic format: 'As a [role], I want [goal] so that [benefit]'",
+            "technical_level": 1,
+            "key_concepts": [
+                "User story format",
+                "Role identification",
+                "Goal clarity",
+                "Benefit statement"
+            ]
+        },
+        "us_invest": {
+            "id": "us_invest",
+            "title": "INVEST Criteria",
+            "description": "The INVEST criteria for effective user stories: Independent, Negotiable, Valuable, Estimable, Small, Testable",
+            "technical_level": 2,
+            "prerequisites": ["us_basics"],
+            "key_concepts": [
+                "Independent stories",
+                "Negotiable scope",
+                "Business value",
+                "Estimation clarity",
+                "Right sizing",
+                "Testability"
+            ]
+        },
+        "us_acceptance": {
+            "id": "us_acceptance",
+            "title": "Acceptance Criteria",
+            "description": "Writing clear acceptance criteria using Given-When-Then format and defining done criteria",
+            "technical_level": 2,
+            "prerequisites": ["us_basics"],
+            "key_concepts": [
+                "Given-When-Then format",
+                "Done criteria",
+                "Scenario testing",
+                "Validation rules"
+            ]
+        },
+        "us_splitting": {
+            "id": "us_splitting",
+            "title": "Story Splitting",
+            "description": "Techniques for splitting large user stories into smaller, manageable pieces while maintaining value",
+            "technical_level": 3,
+            "prerequisites": ["us_invest", "us_acceptance"],
+            "key_concepts": [
+                "Vertical slicing",
+                "Workflow steps",
+                "Data variations",
+                "Business rules"
+            ]
+        },
+        "us_refinement": {
+            "id": "us_refinement",
+            "title": "Story Refinement",
+            "description": "Process of refining user stories through collaboration, including grooming sessions and stakeholder feedback",
+            "technical_level": 3,
+            "prerequisites": ["us_invest", "us_acceptance"],
+            "key_concepts": [
+                "Grooming sessions",
+                "Stakeholder feedback",
+                "Detail level",
+                "Priority assessment"
+            ]
+        },
+        "us_advanced": {
+            "id": "us_advanced",
+            "title": "Advanced User Story Concepts",
+            "description": "Advanced concepts including epics, themes, and story mapping for large-scale requirements",
+            "technical_level": 4,
+            "prerequisites": ["us_splitting", "us_refinement"],
+            "key_concepts": [
+                "Story mapping",
+                "Epic management",
+                "Theme organization",
+                "Release planning"
+            ]
+        }
+    },
+    "edges": [
+        {
+            "source": "us_basics",
+            "target": "us_invest",
+            "type": "prerequisite"
+        },
+        {
+            "source": "us_basics",
+            "target": "us_acceptance",
+            "type": "prerequisite"
+        },
+        {
+            "source": "us_invest",
+            "target": "us_splitting",
+            "type": "prerequisite"
+        },
+        {
+            "source": "us_acceptance",
+            "target": "us_splitting",
+            "type": "prerequisite"
+        },
+        {
+            "source": "us_invest",
+            "target": "us_refinement",
+            "type": "prerequisite"
+        },
+        {
+            "source": "us_acceptance",
+            "target": "us_refinement",
+            "type": "prerequisite"
+        },
+        {
+            "source": "us_splitting",
+            "target": "us_advanced",
+            "type": "prerequisite"
+        },
+        {
+            "source": "us_refinement",
+            "target": "us_advanced",
+            "type": "prerequisite"
+        }
+    ]
+} 

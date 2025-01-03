@@ -1,0 +1,103 @@
+{
+  "test_cases": [
+    {
+      "id": "TC-1",
+      "title": "Common Code Issue Detection",
+      "description": "Test if the system successfully identifies common code issues like code smells or bugs.",
+      "complexity": "high",
+      "validation_rules": [
+        "Identify at least 5 common code issues across multiple coding languages",
+        "Properly flag and report these issues to the user",
+        "The system should not report false positives"
+      ]
+    },
+    {
+      "id": "TC-2",
+      "title": "Clear and Actionable Feedback",
+      "description": "Test whether the feedback provided by the system is clear and actionable for developers to understand and implement.",
+      "complexity": "medium",
+      "validation_rules": [
+        "Generated feedback should be clear and precise",
+        "Feedback should suggest ways to resolve identified issues",
+        "Feedback should reference relevant best practices or coding standards"
+      ]
+    },
+    {
+      "id": "TC-3",
+      "title": "Coding Standard Enforcement",
+      "description": "Verify if the system consistently enforces standard coding practices across different programming languages.",
+      "complexity": "high",
+      "validation_rules": [
+        "System should analyse code changes for adherence to standard coding practices",
+        "Non-adherence to standards should be flagged and reported",
+        "Feedback for non-adherence should provide correct standard to follow"
+      ]
+    },
+    {
+      "id": "TC-4",
+      "title": "Security Issue Detection",
+      "description": "Check that the system properly detects potential security issues in code such as vulnerabilities, exploits or weak code.",
+      "complexity": "high",
+      "validation_rules": [
+        "System should detect common security concerns and threats",
+        "Provided feedback should clearly explain detected concern",
+        "Feedback should suggest proper coding strategies to negate threat"
+      ]
+    },
+    {
+      "id": "TC-5",
+      "title": "Review Metric Improvement",
+      "description": "Ensure that the system's review metrics show improvement over time with consistent use.",
+      "complexity": "medium",
+      "validation_rules": [
+        "System should generate and track review metrics over time",
+        "Metrics should show an improving trend with continued use",
+        "Declining or stagnant metrics should trigger system alerts for corrective measures"
+      ]
+    },
+    {
+      "id": "TC-6",
+      "title": "Error Handling",
+      "description": "Test the system's capability to handle edge cases and errors efficiently. For example, the system is given indecipherable or incompatible code.",
+      "complexity": "low",
+      "validation_rules": [
+        "System should handle errors gracefully and provide clear error messages",
+        "System should not crash on receiving incompatible code",
+        "System should flag indecipherable or incompatible code"
+      ]
+    },
+    {
+      "id": "TC-7",
+      "title": "Detailed Security Check Information",
+      "description": "Verify if the system provides detailed information about specific security checks performed during code review.",
+      "complexity": "high",
+      "validation_rules": [
+        "System should provide clear, specific details about security checks",
+        "Details should include information about common vulnerability types, security patterns, and best practices",
+        "System should not provide only generic descriptions of vulnerabilities"
+      ]
+    },
+    {
+      "id": "TC-8",
+      "title": "Security Check Information for Different Languages",
+      "description": "Verify if the system appropriately reports detailed security check information across different coding languages.",
+      "complexity": "high",
+      "validation_rules": [
+        "Language-specific security checks should be identified and reported",
+        "Reporting should include detailed information for each language-specific test",
+        "System should not give vague or incorrect information for various languages"
+      ]
+    },
+    {
+      "id": "TC-9",
+      "title": "Detailed Vulnerability Report",
+      "description": "Test that the system generates comprehensive reports of detected vulnerabilities, including the type of vulnerability, location in the code, and measures to fix it.",
+      "complexity": "medium",
+      "validation_rules": [
+        "Reports should detail the specific type and location of each detected vulnerability",
+        "Each reported vulnerability should have suggested remedial actions",
+        "The system should not report false positives in the vulnerability report"
+      ]
+    }
+  ]
+}

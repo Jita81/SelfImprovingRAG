@@ -1,0 +1,113 @@
+{
+  "test_cases": [
+    {
+      "id": "TC-1",
+      "title": "Main Functionality Validity",
+      "description": "This test verifies that each feature is independently valuable and can be delivered independently",
+      "complexity": "medium",
+      "validation_rules": [
+        "Each feature should have independent value",
+        "Each feature should be deliverable independently"
+      ]
+    },
+    {
+      "id": "TC-2",
+      "title": "Feature Scope and Boundary Definition",
+      "description": "This test verifies that each feature has clearly defined scope and boundaries",
+      "complexity": "high",
+      "validation_rules": [
+        "Each feature should have a clear scope",
+        "Boundaries for each feature should be well defined"
+      ]
+    },
+    {
+      "id": "TC-3",
+      "title": "Feature Estimation and Prioritization",
+      "description": "This test verifies that each feature can be estimated and prioritized",
+      "complexity": "medium",
+      "validation_rules": [
+        "Each feature should be estimable",
+        "Each feature should be prioritizable"
+      ]
+    },
+    {
+      "id": "TC-4",
+      "title": "Epic Goal Contribution",
+      "description": "This test verifies that each feature supports the epic's overall goals",
+      "complexity": "medium",
+      "validation_rules": [
+        "Each feature should be aligned with the epic's goals"
+      ]
+    },
+    {
+      "id": "TC-5",
+      "title": "Technical Dependencies Consideration",
+      "description": "This test checks if technical dependencies are properly considered while breaking the epic down into features",
+      "complexity": "high",
+      "validation_rules": [
+        "Technical dependencies between features should be identified",
+        "Technical dependencies should not prevent delivering features individually"
+      ]
+    },
+    {
+      "id": "TC-6",
+      "title": "Non-functional Requirements Consideration",
+      "description": "This test verifies that non-functional requirements are accounted for while decomposing an epic into features",
+      "complexity": "high",
+      "validation_rules": [
+        "Non-functional requirements should be identified for each feature",
+        "Each feature should meet its non-functional requirements"
+      ]
+    },
+    {
+      "id": "TC-7",
+      "title": "Edge Case - Single Feature Epic",
+      "description": "This test verifies handling of the edge case where the epic consists of only a single feature",
+      "complexity": "low",
+      "validation_rules": [
+        "Single feature should meet all acceptance criteria"
+      ]
+    },
+    {
+      "id": "TC-8",
+      "title": "Error Condition - Unidentifiable Features",
+      "description": "This test simulates an error condition where the features in an epic couldn't be identified",
+      "complexity": "medium",
+      "validation_rules": [
+        "Epic breakdown process should provide meaningful error message"
+      ]
+    },
+    {
+      "id": "TC-9",
+      "title": "Circular Dependency Detection",
+      "description": "This test verifies that the system can detect circular dependencies during the epic breakdown",
+      "complexity": "high",
+      "validation_rules": [
+        "System should detect circular dependencies between features",
+        "System should prevent creation of circular dependencies",
+        "System should provide a meaningful error message when circular dependencies are detected"
+      ]
+    },
+    {
+      "id": "TC-10",
+      "title": "Edge Case - Complex Circular Dependency",
+      "description": "This test validates handling of complex circular dependencies spread across multiple features",
+      "complexity": "high",
+      "validation_rules": [
+        "System should detect indirect circular dependencies branching across multiple features",
+        "System should prevent creation of complex circular dependencies",
+        "System should provide a meaningful error message when such complex dependencies are detected"
+      ]
+    },
+    {
+      "id": "TC-11",
+      "title": "Dependency Logic Validation",
+      "description": "This test ensures that new knowledge around circular dependency logic is correctly added and validated",
+      "complexity": "medium",
+      "validation_rules": [
+        "Changes to dependency logic should not impact independent feature delivery",
+        "Changes to dependency logic should be valid and detect any form of circular dependencies"
+      ]
+    }
+  ]
+}

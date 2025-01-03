@@ -1,0 +1,154 @@
+{
+  "knowledge_items": [
+    {
+      "id": "KI-1",
+      "type": "concept",
+      "content": "Automated Code Review: An evaluation process where a system inspects the program code for potential issues or deviations from coding standards.",
+      "relationships": [
+        "KI-2",
+        "KI-3",
+        "KI-4"
+      ],
+      "validation_criteria": [
+        "VR-1",
+        "VR-2"
+      ]
+    },
+    {
+      "id": "KI-2",
+      "type": "concept",
+      "content": "Coding Standards: A set of guidelines for a specific programming language that recommends programming style, practices, and methods for each aspect of a program.",
+      "relationships": [
+        "KI-1"
+      ],
+      "validation_criteria": [
+        "VR-3"
+      ]
+    },
+    {
+      "id": "KI-3",
+      "type": "concept",
+      "content": "Security Issues: Detailed examination of common vulnerabilities in code that might make a system susceptible to penetration or infiltration by hackers. This includes the patterns these vulnerabilities typically follow and the best practices for preventing them.",
+      "relationships": [
+        "KI-1"
+      ],
+      "validation_criteria": [
+        "VR-4"
+      ]
+    },
+    {
+      "id": "KI-4",
+      "type": "concept",
+      "content": "Review Metrics: Quantitative measures used to assess the quality and efficiency of code review process over time.",
+      "relationships": [
+        "KI-1"
+      ],
+      "validation_criteria": [
+        "VR-5"
+      ]
+    },
+    {
+      "id": "KI-5",
+      "type": "best_practice",
+      "content": "Provide clear and actionable feedback. Encourage developers to improve by giving them specific, constructive advice on how they can make their code better.",
+      "relationships": [],
+      "validation_criteria": [
+        "VR-6"
+      ]
+    },
+    {
+      "id": "KI-6",
+      "type": "pitfall",
+      "content": "Avoid harsh or vague feedback. This can discourage developers and lead to less effective improvements.",
+      "relationships": [],
+      "validation_criteria": [
+        "VR-7"
+      ]
+    },
+    {
+      "id": "KI-7",
+      "type": "concept",
+      "content": "Error Handling: Processes and methodologies that deal with the identification, catching, and resolution of programming errors and exceptions.",
+      "relationships": [
+        "KI-1"
+      ],
+      "validation_criteria": [
+        "VR-8"
+      ]
+    },
+    {
+      "id": "VR-8",
+      "description": "The system should correctly handle errors and edge cases, and should provide clear error messages in such situations."
+    },
+    {
+      "id": "KI-8",
+      "type": "concept",
+      "content": "Security Checks: A thorough procedure during code review that involves identifying, examining, and resolving security vulnerabilities in the code. It includes understanding common vulnerability types, recognizing prevalent security patterns, and adhering to established best practices.",
+      "relationships": [
+        "KI-1",
+        "KI-3"
+      ],
+      "validation_criteria": [
+        "VR-9",
+        "VR-10",
+        "VR-11"
+      ]
+    },
+    {
+      "id": "VR-9",
+      "description": "The system should provide detailed security check information, including common vulnerability types, security patterns, and best practices."
+    },
+    {
+      "id": "VR-10",
+      "description": "System should provide specific security check information for different programming languages."
+    },
+    {
+      "id": "VR-11",
+      "description": "System should generate comprehensive vulnerability reports, detailing the specific type and location of each detected vulnerability, along with suggested remedial actions."
+    },
+    {
+      "id": "KI-9",
+      "type": "concept",
+      "content": "Specific Coding Vulnerabilities: Detailed analysis on specific coding vulnerabilities that could make a system susceptible to attacks. Includes patterns that these vulnerabilities can follow and how to code in a way that prevents them.",
+      "relationships": [
+        "KI-1",
+        "KI-3"
+      ],
+      "validation_criteria": [
+        "VR-9",
+        "VR-10",
+        "VR-11"
+      ]
+    }
+  ],
+  "validation_rules": [
+    {
+      "id": "VR-1",
+      "description": "Automated Code Review system should be properly integrated with code repository and be able to fetch updates in real time."
+    },
+    {
+      "id": "VR-2",
+      "description": "The system should correctly identify common code issues and suggest improvements."
+    },
+    {
+      "id": "VR-3",
+      "description": "Coding standards should be clearly defined and updated regularly."
+    },
+    {
+      "id": "VR-4",
+      "description": "Ensure timely detection and notification of security vulnerabilities."
+    },
+    {
+      "id": "VR-5",
+      "description": "The review metrics should show a trend of improvement over time."
+    },
+    {
+      "id": "VR-6",
+      "description": "Feedback given to developers should be precise and include actionable improvement steps."
+    },
+    {
+      "id": "VR-7",
+      "description": "Avoid feedback that is overly critical, harsh, or vague."
+    }
+  ]
+}
