@@ -1,53 +1,49 @@
 # Self-Improving RAG System
 
-A Retrieval-Augmented Generation (RAG) system that learns and improves from validation feedback.
+A sophisticated Retrieval-Augmented Generation (RAG) system that continuously improves its knowledge base through automated learning and validation.
 
 ## Overview
 
-The Self-Improving RAG System is designed to enhance the quality and reliability of knowledge retrieval by continuously learning from validation results. It maintains a structured knowledge map and employs various mechanisms to validate, improve, and recover from validation issues.
+The Self-Improving RAG System is designed to maintain and enhance a dynamic knowledge base by:
+- Processing and validating new use cases
+- Detecting patterns in validation issues
+- Automatically improving its knowledge base
+- Monitoring performance metrics
+- Implementing recovery strategies for failures
 
-## Core Components
+## Key Features
 
-### 1. Knowledge Map Management
-- Maintains a graph-based representation of knowledge relationships
-- Validates knowledge node connections and metadata
-- Ensures consistency and quality of the knowledge base
+- **Knowledge Map Generation**: Automatically creates and maintains structured knowledge maps from use cases
+- **Continuous Validation**: Validates knowledge against defined criteria and test cases
+- **Pattern Recognition**: Identifies patterns in validation issues to guide improvements
+- **Self-Improvement**: Automatically enhances knowledge base based on detected patterns
+- **Performance Monitoring**: Tracks system health and effectiveness metrics
+- **Recovery Management**: Handles failures and implements recovery strategies
+- **API Integration**: RESTful API for easy integration with other systems
 
-### 2. Validation System
-- Performs comprehensive validation of knowledge maps
-- Checks for technical level consistency
-- Validates prerequisites and learning paths
-- Identifies potential bottlenecks and issues
+## Documentation
 
-### 3. Pattern Recognition System
-- Analyzes validation history to identify recurring patterns
-- Detects semantic similarities in validation issues
-- Identifies temporal sequences of related issues
-- Provides insights for system improvement
-- [Learn more about Pattern Recognition](docs/pattern_recognition.md)
+### Core Components
+- [Knowledge Map System](docs/knowledge_map_system.md): Core knowledge representation and management
+- [LLM Integration](docs/llm_integration.md): Integration with Large Language Models
+- [Knowledge Validation](docs/knowledge_validation.md): Validation process and criteria
+- [Use Case Management](docs/use_case_management.md): Use case processing and management
 
-### 4. Recovery Management System
-- Handles validation failures with automated recovery strategies
-- Integrates with Pattern Recognition for intelligent recovery
-- Manages concurrent recovery operations
-- Tracks recovery history and effectiveness
-- [Learn more about Recovery Management](docs/recovery_management.md)
+### System Features
+- [Pattern Recognition](docs/pattern_recognition.md): Pattern detection and analysis
+- [Performance Monitoring](docs/performance_monitoring.md): System metrics and monitoring
+- [Recovery Management](docs/recovery_management.md): Failure handling and recovery
+- [API Reference](docs/api.md): Complete API documentation
 
-### 5. Performance Monitoring System
-- Tracks and analyzes system performance metrics
-- Monitors validation success rates and confidence scores
-- Measures recovery effectiveness and pattern detection
-- Provides alerts for performance degradation
-- [Learn more about Performance Monitoring](docs/performance_monitoring.md)
+## Getting Started
 
-### 6. API Service
-- Provides RESTful endpoints for system interaction
-- Enables programmatic access to all components
-- Supports validation, recovery, and monitoring
-- Includes comprehensive error handling
-- [Learn more about the API](docs/api.md)
+### Prerequisites
+- Python 3.8+
+- OpenAI API key
+- FastAPI
+- PostgreSQL
 
-## Installation
+### Installation
 
 1. Clone the repository:
 ```bash
@@ -60,110 +56,74 @@ cd self-improving-rag
 pip install -r requirements.txt
 ```
 
-3. Start the API server:
+3. Set up environment variables:
 ```bash
-uvicorn src.api.api:app --reload
+cp .env.example .env
+# Edit .env with your configuration
+```
+
+4. Initialize the database:
+```bash
+python scripts/init_db.py
+```
+
+5. Start the server:
+```bash
+python run_api.py
 ```
 
 ## Usage
 
-### Python SDK
-```python
-from src.models.knowledge_map_validator import KnowledgeMapValidator
-from src.services.pattern_recognition import PatternRecognitionService
-from src.services.recovery_management import RecoveryManagementService
-from src.services.performance_monitoring import PerformanceMonitoringService
+### Creating a Use Case
 
-# Initialize components
-validator = KnowledgeMapValidator()
-pattern_service = PatternRecognitionService(embedding_model)
-recovery_service = RecoveryManagementService(pattern_service)
-monitoring_service = PerformanceMonitoringService()
-
-# Validate knowledge map
-result = validator.validate_map(knowledge_map)
-
-# Analyze validation patterns
-patterns = pattern_service.analyze_validation_history(validation_results)
-
-# Handle validation failures
-if not result.is_valid:
-    recovery_action = recovery_service.analyze_failure(result, validation_history)
-    success = recovery_service.execute_recovery(
-        recovery_action,
-        {
-            "knowledge_map": knowledge_map,
-            "validation_system": validator
-        }
-    )
-
-# Monitor performance
-metrics = monitoring_service.calculate_metrics(
-    validation_results=validation_history,
-    detected_patterns=patterns,
-    recovery_actions=recovery_service.recovery_history
-)
-
-# Check for alerts
-alerts = monitoring_service.check_alerts(metrics)
-```
-
-### REST API
-```python
-import requests
-
-# Base URL
-base_url = "http://localhost:8000"
-
-# Validate knowledge map
-response = requests.post(f"{base_url}/validate", json=knowledge_map)
-validation_result = response.json()
-
-# Get patterns
-response = requests.get(f"{base_url}/patterns", params={"min_significance": 0.7})
-patterns = response.json()
-
-# Execute recovery
-recovery_request = {
-    "validation_result": validation_result,
-    "knowledge_map": knowledge_map
-}
-response = requests.post(f"{base_url}/recover", json=recovery_request)
-success = response.json()
-
-# Get metrics
-response = requests.get(f"{base_url}/metrics", params={"window_size": 48})
-metrics = response.json()
-
-# Get alerts
-response = requests.get(f"{base_url}/alerts")
-alerts = response.json()
-```
-
-## Testing
-
-Run the test suite:
 ```bash
-PYTHONPATH=$PYTHONPATH:. python3 -m pytest tests/ -v
+curl -X POST http://localhost:8001/use-cases/ \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Example Use Case",
+    "description": "Description of the use case",
+    "domain": "example_domain",
+    "technical_level": "intermediate",
+    "success_criteria": ["Criteria 1", "Criteria 2"],
+    "acceptance_criteria": ["Acceptance 1", "Acceptance 2"]
+  }'
 ```
 
-## Documentation
+### Querying the System
 
-- [System Architecture](docs/system-architecture.md)
-- [Knowledge Map Validation](docs/knowledge-map-validation.md)
-- [Pattern Recognition](docs/pattern_recognition.md)
-- [Recovery Management](docs/recovery_management.md)
-- [Performance Monitoring](docs/performance_monitoring.md)
-- [API Documentation](docs/api.md)
+```bash
+curl -X POST http://localhost:8001/queries/ \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "Your question here",
+    "use_case": "Example Use Case",
+    "domain": "example_domain"
+  }'
+```
+
+## Architecture
+
+The system follows a modular architecture with these key components:
+
+- **API Layer**: FastAPI-based REST API
+- **Service Layer**: Core business logic and processing
+- **Model Layer**: Data models and validation
+- **Storage Layer**: Knowledge base and metadata storage
 
 ## Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- OpenAI for GPT models
+- FastAPI framework
+- All contributors and maintainers 

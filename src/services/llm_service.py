@@ -7,10 +7,15 @@ from dotenv import load_dotenv
 class LLMService:
     def __init__(self):
         """Initialize the LLM service"""
-        load_dotenv()  # Load environment variables from .env file
-        if "OPENAI_API_KEY" not in os.environ:
-            raise EnvironmentError("OPENAI_API_KEY environment variable is not set")
-        openai.api_key = os.environ["OPENAI_API_KEY"]
+        # Load environment variables
+        load_dotenv()
+        
+        # Get API key from environment
+        api_key = os.getenv('OPENAI_API_KEY')
+        if not api_key:
+            raise ValueError("OPENAI_API_KEY not found in environment variables")
+            
+        openai.api_key = api_key
         self.client = openai.OpenAI()
         
     def answer_query(self, query: str, use_case: str, knowledge_map: Dict) -> str:

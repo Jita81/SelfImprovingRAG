@@ -1,0 +1,73 @@
+{
+  "knowledge_items": [
+    {
+      "id": "KI-1",
+      "type": "concept",
+      "content": "User Story: A functional increment of a product with value which is independent, negotiable, valuable, estimable, and small.",
+      "relationships": [],
+      "validation_criteria": [
+        "VR-1",
+        "VR-2"
+      ]
+    },
+    {
+      "id": "KI-2",
+      "type": "concept",
+      "content": "Value Proposition: The unique value that a product or service provides to its customers.",
+      "relationships": [
+        "KI-1"
+      ],
+      "validation_criteria": [
+        "VR-3"
+      ]
+    },
+    {
+      "id": "KI-3",
+      "type": "concept",
+      "content": "Dependency: The relationship between two or more user stories where one story requires another to be completed first.",
+      "relationships": [
+        "KI-1"
+      ],
+      "validation_criteria": [
+        "VR-4"
+      ]
+    },
+    {
+      "id": "KI-4",
+      "type": "best_practice",
+      "content": "Always define clear acceptance criteria for each story. Ensure that each story delivers value independently.",
+      "relationships": [
+        "KI-1"
+      ],
+      "validation_criteria": []
+    },
+    {
+      "id": "KI-5",
+      "type": "pitfall",
+      "content": "Avoid creating dependencies between user stories. This makes it harder to implement stories independently and reduces flexibility.",
+      "relationships": [
+        "KI-1",
+        "KI-3"
+      ],
+      "validation_criteria": []
+    }
+  ],
+  "validation_rules": [
+    {
+      "id": "VR-1",
+      "description": "User Story should be functional and have a clear value proposition."
+    },
+    {
+      "id": "VR-2",
+      "description": "User story should be small, independent and accomplisable in a single sprint."
+    },
+    {
+      "id": "VR-3",
+      "description": "Value Proposition must be unique and clear."
+    },
+    {
+      "id": "VR-4",
+      "description": "Dependencies should be minimized and clearly defined."
+    }
+  ]
+}
