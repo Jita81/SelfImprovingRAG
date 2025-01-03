@@ -74,30 +74,79 @@ python run_api.py
 
 ## Usage
 
-### Creating a Use Case
+The system provides three main endpoints for interaction:
+
+### 1. Creating a Use Case
+
+Create a new use case to define a knowledge domain:
 
 ```bash
 curl -X POST http://localhost:8001/use-cases/ \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Example Use Case",
-    "description": "Description of the use case",
-    "domain": "example_domain",
+    "name": "Epic Feature Breakdown",
+    "description": "A system that analyzes Azure DevOps epic descriptions and breaks them down into modular, well-defined features.",
+    "domain": "feature_breakdown",
     "technical_level": "intermediate",
-    "success_criteria": ["Criteria 1", "Criteria 2"],
-    "acceptance_criteria": ["Acceptance 1", "Acceptance 2"]
+    "success_criteria": [
+      "Identify all core functionalities from epic description",
+      "Create modular and independent features",
+      "Ensure complete coverage of epic requirements"
+    ],
+    "acceptance_criteria": [
+      "Each feature should be independently implementable",
+      "All epic requirements must be covered",
+      "Dependencies between features must be clearly identified"
+    ],
+    "output_requirements": {
+      "format": "text",
+      "structure": {"type": "explanation"},
+      "validation_rules": ["Must be clear and actionable"],
+      "examples": []
+    },
+    "knowledge_prerequisites": [
+      "Understanding of SOLID principles",
+      "Knowledge of modular design"
+    ],
+    "example_queries": [
+      "How to handle cross-cutting concerns?",
+      "What is the optimal feature size?"
+    ]
   }'
 ```
 
-### Querying the System
+### 2. Querying the System
+
+Query the system with specific questions or scenarios:
 
 ```bash
 curl -X POST http://localhost:8001/queries/ \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "Your question here",
-    "use_case": "Example Use Case",
-    "domain": "example_domain"
+    "query": "How should I break down this epic: \"Implement a secure document management system with version control, access control, and full-text search capabilities\"",
+    "use_case": "Epic Feature Breakdown",
+    "domain": "feature_breakdown"
+  }'
+```
+
+### 3. Reporting Bugs/Improvements
+
+Report issues or suggest improvements to help the system learn:
+
+```bash
+curl -X POST http://localhost:8001/bugs/ \
+  -H "Content-Type: application/json" \
+  -d '{
+    "use_case": "Epic Feature Breakdown",
+    "domain": "feature_breakdown",
+    "description": "System does not properly handle cross-cutting concerns in feature breakdown",
+    "steps_to_reproduce": [
+      "Create an epic with security requirements that affect multiple features",
+      "Request feature breakdown",
+      "Observe that security requirements are duplicated across features"
+    ],
+    "expected_behavior": "System should identify cross-cutting concerns and suggest them as separate architectural features or aspects",
+    "actual_behavior": "System duplicates cross-cutting concerns across multiple features"
   }'
 ```
 
