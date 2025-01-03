@@ -1,0 +1,333 @@
+{
+  "knowledge_items": [
+    {
+      "id": "KI-1",
+      "type": "concept",
+      "content": "API: Application Programming Interface, a set of rules and protocols for building and interacting with software applications.",
+      "relationships": [],
+      "validation_criteria": [
+        "VR-1",
+        "VR-6",
+        "VR-7"
+      ]
+    },
+    {
+      "id": "KI-2",
+      "type": "concept",
+      "content": "Endpoint: A specific URL where an API can be accessed.",
+      "relationships": [
+        "KI-1"
+      ],
+      "validation_criteria": [
+        "VR-2",
+        "VR-3"
+      ]
+    },
+    {
+      "id": "KI-3",
+      "type": "concept",
+      "content": "Test system: A system designed to validate the functionality and performance of the API.",
+      "relationships": [
+        "KI-1",
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-4"
+      ]
+    },
+    {
+      "id": "KI-4",
+      "type": "best_practice",
+      "content": "Use versioning in your APIs to avoid breaking changes.",
+      "relationships": [
+        "KI-1"
+      ],
+      "validation_criteria": [
+        "VR-11"
+      ]
+    },
+    {
+      "id": "KI-5",
+      "type": "best_practice",
+      "content": "Design the API with scalability in mind.",
+      "relationships": [
+        "KI-1"
+      ],
+      "validation_criteria": [
+        "VR-12"
+      ]
+    },
+    {
+      "id": "KI-6",
+      "type": "pitfall",
+      "content": "Neglecting to secure endpoints can expose sensitive data or allow unauthorized access.",
+      "relationships": [
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-5",
+        "VR-8",
+        "VR-9",
+        "VR-10"
+      ]
+    },
+    {
+      "id": "VR-6",
+      "description": "Endpoints must respond within acceptable time frame"
+    },
+    {
+      "id": "VR-7",
+      "description": "Responses must match expected output"
+    },
+    {
+      "id": "VR-8",
+      "description": "System should prevent SQL injection attacks"
+    },
+    {
+      "id": "VR-9",
+      "description": "System should prevent cross-site scripting attacks"
+    },
+    {
+      "id": "VR-10",
+      "description": "System should not expose sensitive data"
+    },
+    {
+      "id": "KI-7",
+      "type": "best_practice",
+      "content": "Endpoints should follow RESTful design principles",
+      "relationships": [
+        "KI-1"
+      ],
+      "validation_criteria": [
+        "VR-6",
+        "VR-7"
+      ]
+    },
+    {
+      "id": "KI-8",
+      "type": "best_practice",
+      "content": "Clear and helpful error messages must be utilized",
+      "relationships": [
+        "KI-1"
+      ],
+      "validation_criteria": [
+        "VR-13"
+      ]
+    },
+    {
+      "id": "KI-9",
+      "type": "best_practice",
+      "content": "Use of HTTP status codes should be correct",
+      "relationships": [
+        "KI-1"
+      ],
+      "validation_criteria": [
+        "VR-14"
+      ]
+    },
+    {
+      "id": "KI-015",
+      "type": "concept",
+      "content": "Complex systems should return suitable error messages.",
+      "relationships": [],
+      "validation_criteria": [
+        "VR-15"
+      ],
+      "remove": "true",
+      "duplicate_of": "KI-8"
+    },
+    {
+      "id": "KI-016",
+      "type": "concept",
+      "content": "HTTP status codes should be used appropriately.",
+      "relationships": [],
+      "validation_criteria": [
+        "VR-16"
+      ],
+      "remove": "true",
+      "duplicate_of": "KI-9"
+    },
+    {
+      "id": "KI-017",
+      "type": "concept",
+      "content": "System must handle empty inputs.",
+      "relationships": [],
+      "validation_criteria": [
+        "VR-17"
+      ],
+      "remove": "true",
+      "duplicate_of": null
+    },
+    {
+      "id": "KI-018",
+      "type": "concept",
+      "content": "System must handle invalid inputs.",
+      "relationships": [],
+      "validation_criteria": [
+        "VR-18"
+      ],
+      "remove": "true",
+      "duplicate_of": null
+    },
+    {
+      "id": "KI-019",
+      "type": "concept",
+      "content": "API versioning should prevent breaking changes.",
+      "relationships": [],
+      "validation_criteria": [
+        "VR-19"
+      ],
+      "remove": "true",
+      "duplicate_of": "KI-4"
+    },
+    {
+      "id": "KI-020",
+      "type": "concept",
+      "content": "API design should take scalability into consideration.",
+      "relationships": [],
+      "validation_criteria": [],
+      "remove": "true",
+      "duplicate_of": "KI-5"
+    },
+    {
+      "id": "KI-021",
+      "type": "concept",
+      "content": "Complex systems should return suitable error messages",
+      "relationships": [],
+      "validation_criteria": [],
+      "remove": "true",
+      "duplicate_of": "KI-8"
+    },
+    {
+      "id": "KI-022",
+      "type": "concept",
+      "content": "HTTP status codes should be used appropriately",
+      "relationships": [],
+      "validation_criteria": [],
+      "remove": "true",
+      "duplicate_of": "KI-9"
+    },
+    {
+      "id": "KI-023",
+      "type": "concept",
+      "content": "System must handle empty inputs",
+      "relationships": [],
+      "validation_criteria": [],
+      "remove": "true",
+      "duplicate_of": null
+    },
+    {
+      "id": "KI-024",
+      "type": "concept",
+      "content": "System must handle invalid inputs",
+      "relationships": [],
+      "validation_criteria": [],
+      "remove": "true",
+      "duplicate_of": null
+    },
+    {
+      "id": "KI-025",
+      "type": "concept",
+      "content": "API versioning should prevent breaking changes",
+      "relationships": [],
+      "validation_criteria": [],
+      "remove": "true",
+      "duplicate_of": "KI-4"
+    },
+    {
+      "id": "KI-026",
+      "type": "concept",
+      "content": "API design should take scalability into consideration",
+      "relationships": [],
+      "validation_criteria": [],
+      "remove": "true",
+      "duplicate_of": "KI-5"
+    },
+    {
+      "title": "Test API Protocol Conformation",
+      "description": "Verify that the API follows either REST or SOAP protocols as expected.",
+      "validation_rules": [
+        "API should follow REST or SOAP protocol"
+      ]
+    },
+    {
+      "id": "KI-027",
+      "type": "concept",
+      "content": "System should measure response time for each API call",
+      "relationships": [],
+      "validation_criteria": [
+        "VR-20"
+      ]
+    },
+    {
+      "id": "KI-028",
+      "type": "concept",
+      "content": "System should compare response time to acceptable threshold",
+      "relationships": [],
+      "validation_criteria": [
+        "VR-21"
+      ]
+    },
+    {
+      "id": "KI-029",
+      "type": "concept",
+      "content": "System should flag responses that exceed threshold",
+      "relationships": [],
+      "validation_criteria": [
+        "VR-22"
+      ]
+    },
+    {
+      "id": "VR-20",
+      "description": "System should measure response time for each API call"
+    },
+    {
+      "id": "VR-21",
+      "description": "System should compare response time to acceptable threshold"
+    },
+    {
+      "id": "VR-22",
+      "description": "System should flag responses that exceed threshold"
+    },
+    {
+      "type": "relationship",
+      "from": "KI-027",
+      "to": "VR-20",
+      "description": "System should measure response time for each API call"
+    },
+    {
+      "type": "relationship",
+      "from": "KI-028",
+      "to": "VR-21",
+      "description": "System should compare response time to acceptable threshold"
+    },
+    {
+      "type": "relationship",
+      "from": "KI-029",
+      "to": "VR-22",
+      "description": "System should flag responses that exceed threshold"
+    }
+  ],
+  "validation_rules": [
+    {
+      "id": "VR-1",
+      "description": "API should follow REST or SOAP protocol."
+    },
+    {
+      "id": "VR-2",
+      "description": "Every endpoint should be functional and accessible."
+    },
+    {
+      "id": "VR-3",
+      "description": "Endpoints should adhere to HTTP/HTTPS protocols."
+    },
+    {
+      "id": "VR-4",
+      "description": "Test system should be able to accurately simulate real-world conditions."
+    },
+    {
+      "id": "VR-5",
+      "description": "API endpoints should utilize adequate security measures."
+    }
+  ]
+}

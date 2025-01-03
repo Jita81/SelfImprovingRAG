@@ -22,7 +22,8 @@
         "KI-1"
       ],
       "validation_criteria": [
-        "VR-3"
+        "VR-3",
+        "VR-13"
       ]
     },
     {
@@ -109,7 +110,7 @@
     {
       "id": "KI-9",
       "type": "concept",
-      "content": "Specific Coding Vulnerabilities: Detailed analysis on specific coding vulnerabilities that could make a system susceptible to attacks. Includes patterns that these vulnerabilities can follow and how to code in a way that prevents them.",
+      "content": "Specific Coding Vulnerabilities: Detailed analysis on specific coding vulnerabilities that could make a system susceptible to attacks which includes preventive measures, reporting practices and effective mitigation strategies.",
       "relationships": [
         "KI-1",
         "KI-3"
@@ -119,6 +120,66 @@
         "VR-10",
         "VR-11"
       ]
+    },
+    {
+      "id": "KI-10",
+      "type": "concept",
+      "content": "Issue Prioritization: Detailed strategies and criteria to prioritize the issues detected during the code review process based on their severity and impact on overall code quality and security.",
+      "relationships": [
+        "KI-1",
+        "KI-3",
+        "KI-4"
+      ],
+      "validation_criteria": [
+        "VR-12",
+        "VR-14"
+      ]
+    },
+    {
+      "id": "VR-12",
+      "description": "The system should be able to effectively prioritize issues based on their type and severity, with critical bugs and security issues flagged with a heightened priority. Issue prioritization should match use case expectations."
+    },
+    {
+      "id": "KI-11",
+      "type": "concept",
+      "content": "Code Style Issue: Potential issues in the program code that don't necessarily break the code or make the system insecure, but could lead to less readability, maintainability.",
+      "relationships": [
+        "KI-1"
+      ],
+      "validation_criteria": [
+        "VR-15"
+      ]
+    },
+    {
+      "id": "VR-13",
+      "description": "Validation rule to check whether the coding standards issues are being prioritized and categorized properly."
+    },
+    {
+      "id": "VR-14",
+      "description": "Validation rule for 'style issues' to separately categorize and correctly assign lower priority in 'Issue Prioritization'. Prioritization should align with use case expectations."
+    },
+    {
+      "id": "VR-15",
+      "description": "Validation rule for 'Code Style Issue' to ensure its proper detection and adjudication."
+    },
+    {
+      "id": "KI-12",
+      "type": "concept",
+      "content": "Language-Specific Coding Styles: A set of coding style guidelines that can vary among different programming languages.",
+      "relationships": [
+        "KI-2"
+      ],
+      "validation_criteria": [
+        "VR-16"
+      ]
+    },
+    {
+      "id": "VR-16",
+      "description": "Validation rule for 'Language-Specific Coding Styles' to ensure appropriate adherence and detection of deviations in different programming languages."
+    },
+    {
+      "id": "VR-17",
+      "description": "A validation rule to check the system's efficiency in handling a mix of severe and minor issues. The system should not treat all issues as having equal priority and should manage to prioritize critical issues even with the presence of minor ones."
     }
   ],
   "validation_rules": [

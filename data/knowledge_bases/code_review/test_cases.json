@@ -98,6 +98,50 @@
         "Each reported vulnerability should have suggested remedial actions",
         "The system should not report false positives in the vulnerability report"
       ]
+    },
+    {
+      "id": "TC-10",
+      "title": "Issue Prioritization",
+      "description": "Test that the system adequately prioritizes code issues from more critical bugs to lesser style issues.",
+      "complexity": "high",
+      "validation_rules": [
+        "Issue prioritization should be based on the severity of the issue",
+        "Critical bugs and security issues should be displayed first",
+        "Minor style issues should be displayed last"
+      ]
+    },
+    {
+      "id": "TC-11",
+      "title": "Issue Categorization",
+      "description": "Verify the system categorizes issues accurately to make it easier to focus on a specific issue type.",
+      "complexity": "medium",
+      "validation_rules": [
+        "System should group issues into categories according to their type (critical bugs, security issues, style issues, etc.)",
+        "Each category must list its issues from most to least severe",
+        "Categories must be easily selectable to allow focusing on a specific issue type"
+      ]
+    },
+    {
+      "id": "TC-12",
+      "title": "Mixed Issue Handling",
+      "description": "Test if the system can handle a mix of severe and minor issues without treating them as having equal priority.",
+      "complexity": "high",
+      "validation_rules": [
+        "All detected issues should be clearly displayed and categorised",
+        "Critical and security issues should be listed before minor and style ones",
+        "Feedback regarding critical issues should not be diluted in the presence of style and minor issues"
+      ]
+    },
+    {
+      "id": "TC-13",
+      "title": "Style Issue Prioritization",
+      "description": "Ensure style issues are identified and correctly assigned a lower priority, but still included in the overall code quality metrics.",
+      "complexity": "medium",
+      "validation_rules": [
+        "Style issues should be detected and reported, not omitted",
+        "Style issues should be lower priority than critical bugs",
+        "Metrics should reflect the number and severity of style issues in the code"
+      ]
     }
   ]
 }

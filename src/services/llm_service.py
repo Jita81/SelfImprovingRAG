@@ -2,11 +2,15 @@ from typing import Dict, List
 import json
 import openai
 import os
+from dotenv import load_dotenv
 
 class LLMService:
     def __init__(self):
         """Initialize the LLM service"""
-        openai.api_key = os.getenv("OPENAI_API_KEY")
+        load_dotenv()  # Load environment variables from .env file
+        if "OPENAI_API_KEY" not in os.environ:
+            raise EnvironmentError("OPENAI_API_KEY environment variable is not set")
+        openai.api_key = os.environ["OPENAI_API_KEY"]
         self.client = openai.OpenAI()
         
     def answer_query(self, query: str, use_case: str, knowledge_map: Dict) -> str:
