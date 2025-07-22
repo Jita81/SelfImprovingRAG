@@ -57,3 +57,4 @@ Thumbs.db
 # Vercel
 .vercel
 .now 
+node_modules

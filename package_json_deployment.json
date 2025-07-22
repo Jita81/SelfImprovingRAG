@@ -1,0 +1,404 @@
+{
+  "name": "context-engineering-platform",
+  "version": "1.0.0",
+  "description": "Gamified Context Engineering Optimization Platform with automated AI performance testing",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "npm install --production",
+    "test": "jest",
+    "optimize": "node scripts/optimize-all-builds.js",
+    "sync-data": "node scripts/sync-azure-data.js",
+    "deploy": "npm run build && az webapp deployment source config-zip --resource-group context-engineering-rg --name context-eng-server --src context-eng-app.zip"
+  },
+  "dependencies": {
+    "@azure/storage-blob": "^12.17.0",
+    "@azure/search-documents": "^12.0.0",
+    "@azure/identity": "^4.0.1",
+    "@azure/keyvault-secrets": "^4.7.0",
+    "@azure/app-configuration": "^1.5.0",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "compression": "^1.7.4",
+    "openai": "^4.20.1",
+    "axios": "^1.6.2",
+    "lodash": "^4.17.21",
+    "node-cron": "^3.0.3",
+    "winston": "^3.11.0",
+    "express-rate-limit": "^7.1.5",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.32.6",
+    "pdf-parse": "^1.1.1",
+    "mammoth": "^1.6.0",
+    "csv-parser": "^3.0.0",
+    "uuid": "^9.0.1",
+    "joi": "^17.11.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "keywords": [
+    "context-engineering",
+    "ai-optimization",
+    "gamification",
+    "azure",
+    "machine-learning",
+    "automation"
+  ],
+  "author": "Context Engineering Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/context-engineering-platform.git"
+  }
+}
+
+// scripts/optimize-all-builds.js
+const axios = require('axios');
+const cron = require('node-cron');
+
+const API_BASE = process.env.API_BASE || 'http://localhost:3000';
+
+async function optimizeAllBuilds() {
+  try {
+    console.log('🚀 Starting automated build optimization...');
+    
+    // Get all builds
+    const buildsResponse = await axios.get(`${API_BASE}/api/builds`);
+    const builds = buildsResponse.data;
+    
+    console.log(`📊 Found ${builds.length} builds to optimize`);
+    
+    for (const build of builds) {
+      console.log(`🔧 Optimizing ${build.name}...`);
+      
+      try {
+        const optimizationResponse = await axios.post(
+          `${API_BASE}/api/builds/${build.id}/optimize`
+        );
+        
+        console.log(`✅ ${build.name} optimization complete`);
+        console.log(`   Success rate: ${build.successRate}% → ${optimizationResponse.data.finalPerformance?.successRate || 'TBD'}%`);
+        
+      } catch (error) {
+        console.error(`❌ Failed to optimize ${build.name}:`, error.message);
+      }
+      
+      // Wait between optimizations to avoid rate limits
+      await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+    
+    console.log('🎉 Automated optimization complete!');
+    
+  } catch (error) {
+    console.error('💥 Optimization failed:', error.message);
+  }
+}
+
+// Schedule optimization runs
+if (require.main === module) {
+  // Run immediately
+  optimizeAllBuilds();
+  
+  // Schedule daily optimization at 2 AM
+  cron.schedule('0 2 * * *', () => {
+    console.log('🕐 Running scheduled optimization...');
+    optimizeAllBuilds();
+  });
+  
+  console.log('📅 Scheduled daily optimization at 2:00 AM');
+}
+
+module.exports = optimizeAllBuilds;
+
+// scripts/sync-azure-data.js
+const { BlobServiceClient } = require('@azure/storage-blob');
+const { DefaultAzureCredential } = require('@azure/identity');
+const axios = require('axios');
+
+class AzureDataSyncer {
+  constructor() {
+    this.credential = new DefaultAzureCredential();
+    this.blobServiceClient = new BlobServiceClient(
+      `https://${process.env.AZURE_STORAGE_ACCOUNT}.blob.core.windows.net`,
+      this.credential
+    );
+  }
+
+  async syncSlackData() {
+    console.log('📱 Syncing Slack data...');
+    
+    try {
+      const response = await axios.get('https://slack.com/api/conversations.history', {
+        headers: {
+          'Authorization': `Bearer ${process.env.SLACK_BOT_TOKEN}`
+        },
+        params: {
+          channel: 'engineering',
+          limit: 100
+        }
+      });
+
+      const containerClient = this.blobServiceClient.getContainerClient('slack-data');
+      const blobName = `slack-sync-${new Date().toISOString().split('T')[0]}.json`;
+      const blobClient = containerClient.getBlockBlobClient(blobName);
+
+      await blobClient.upload(
+        JSON.stringify(response.data, null, 2), 
+        JSON.stringify(response.data, null, 2).length
+      );
+
+      console.log('✅ Slack data synced successfully');
+    } catch (error) {
+      console.error('❌ Slack sync failed:', error.message);
+    }
+  }
+
+  async syncGitHubData() {
+    console.log('🐙 Syncing GitHub data...');
+    
+    try {
+      const response = await axios.get(`https://api.github.com/orgs/${process.env.GITHUB_ORG}/repos`, {
+        headers: {
+          'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`
+        }
+      });
+
+      const containerClient = this.blobServiceClient.getContainerClient('github-data');
+      const blobName = `github-sync-${new Date().toISOString().split('T')[0]}.json`;
+      const blobClient = containerClient.getBlockBlobClient(blobName);
+
+      await blobClient.upload(
+        JSON.stringify(response.data, null, 2), 
+        JSON.stringify(response.data, null, 2).length
+      );
+
+      console.log('✅ GitHub data synced successfully');
+    } catch (error) {
+      console.error('❌ GitHub sync failed:', error.message);
+    }
+  }
+
+  async syncJiraData() {
+    console.log('🎫 Syncing Jira data...');
+    
+    try {
+      const auth = Buffer.from(`${process.env.JIRA_USERNAME}:${process.env.JIRA_API_TOKEN}`).toString('base64');
+      
+      const response = await axios.get(`${process.env.JIRA_HOST}/rest/api/3/search`, {
+        headers: {
+          'Authorization': `Basic ${auth}`,
+          'Accept': 'application/json'
+        },
+        params: {
+          jql: 'project = ENG AND updated >= -7d',
+          maxResults: 100
+        }
+      });
+
+      const containerClient = this.blobServiceClient.getContainerClient('jira-data');
+      const blobName = `jira-sync-${new Date().toISOString().split('T')[0]}.json`;
+      const blobClient = containerClient.getBlockBlobClient(blobName);
+
+      await blobClient.upload(
+        JSON.stringify(response.data, null, 2), 
+        JSON.stringify(response.data, null, 2).length
+      );
+
+      console.log('✅ Jira data synced successfully');
+    } catch (error) {
+      console.error('❌ Jira sync failed:', error.message);
+    }
+  }
+
+  async syncAllData() {
+    console.log('🔄 Starting full data sync...');
+    
+    await Promise.allSettled([
+      this.syncSlackData(),
+      this.syncGitHubData(),
+      this.syncJiraData()
+    ]);
+    
+    console.log('🎉 Data sync complete!');
+  }
+}
+
+if (require.main === module) {
+  const syncer = new AzureDataSyncer();
+  syncer.syncAllData();
+}
+
+module.exports = AzureDataSyncer;
+
+// Dockerfile
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy application code
+COPY . .
+
+# Create uploads directory
+RUN mkdir -p uploads
+
+# Expose port
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:3000/health || exit 1
+
+# Start application
+CMD ["npm", "start"]
+
+// .env.example
+# Azure Configuration
+AZURE_STORAGE_ACCOUNT=contextengdata
+AZURE_SEARCH_SERVICE=context-eng-search
+AZURE_SEARCH_KEY=your-search-key
+
+# OpenAI Configuration
+OPENAI_API_KEY=sk-your-openai-key
+
+# Data Source APIs
+SLACK_BOT_TOKEN=xoxb-your-slack-token
+SLACK_CHANNELS=general,engineering,support
+
+GITHUB_TOKEN=ghp_your-github-token
+GITHUB_ORG=your-organization
+GITHUB_REPOS=repo1,repo2,repo3
+
+JIRA_HOST=https://yourcompany.atlassian.net
+JIRA_USERNAME=your-email@company.com
+JIRA_API_TOKEN=your-jira-token
+
+# Application Configuration
+NODE_ENV=production
+PORT=3000
+API_BASE=https://context-eng-server.azurewebsites.net
+
+# Security
+JWT_SECRET=your-jwt-secret
+SESSION_SECRET=your-session-secret
+
+# Optimization Settings
+MAX_OPTIMIZATION_ITERATIONS=10
+MIN_SUCCESS_RATE_THRESHOLD=80
+TOKEN_BUDGET_LIMIT=5000
+PERFORMANCE_TEST_BATCH_SIZE=5
+
+// docker-compose.yml
+version: '3.8'
+
+services:
+  context-engineering-platform:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    env_file:
+      - .env
+    volumes:
+      - ./uploads:/app/uploads
+      - ./logs:/app/logs
+    restart: unless-stopped
+    
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+
+// azure-pipelines.yml
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+
+variables:
+  azureServiceConnection: 'azure-service-connection'
+  resourceGroupName: 'context-engineering-rg'
+  webAppName: 'context-eng-server'
+  
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: Build
+  displayName: 'Build Application'
+  jobs:
+  - job: Build
+    displayName: 'Build Job'
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '18.x'
+      displayName: 'Install Node.js'
+
+    - script: |
+        npm ci
+        npm run test
+        npm run build
+      displayName: 'npm install, test and build'
+
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        replaceExistingArchive: true
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+
+- stage: Deploy
+  displayName: 'Deploy to Azure'
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - deployment: Deploy
+    displayName: 'Deploy Job'
+    environment: 'production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureWebApp@1
+            inputs:
+              azureSubscription: $(azureServiceConnection)
+              appType: 'webAppLinux'
+              appName: $(webAppName)
+              runtimeStack: 'NODE|18-lts'
+              package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
+              startUpCommand: 'npm start'
