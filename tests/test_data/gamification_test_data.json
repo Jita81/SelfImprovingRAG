@@ -11,13 +11,10 @@
       },
       "gamification": {
         "level": 12,
-        "experiencePoints": 2847,
-        "totalOptimizations": 156,
-        "successfulOptimizations": 142,
-        "winStreak": 7,
-        "currentLevelXp": 2847,
-        "nextLevelXp": 3000,
-        "totalXpEarned": 28470
+        "experience_points": 2847,
+        "total_optimizations": 156,
+        "successful_optimizations": 142,
+        "win_streak": 7
       },
       "created_at": "2024-01-15T10:30:00Z",
       "last_active": "2024-03-15T14:22:00Z"
@@ -33,13 +30,10 @@
       },
       "gamification": {
         "level": 15,
-        "experiencePoints": 4250,
-        "totalOptimizations": 234,
-        "successfulOptimizations": 224,
-        "winStreak": 12,
-        "currentLevelXp": 1250,
-        "nextLevelXp": 1500,
-        "totalXpEarned": 47250
+        "experience_points": 4250,
+        "total_optimizations": 234,
+        "successful_optimizations": 224,
+        "win_streak": 12
       },
       "created_at": "2024-01-10T09:15:00Z",
       "last_active": "2024-03-15T16:45:00Z"
@@ -55,13 +49,10 @@
       },
       "gamification": {
         "level": 18,
-        "experiencePoints": 2100,
-        "totalOptimizations": 312,
-        "successfulOptimizations": 298,
-        "winStreak": 8,
-        "currentLevelXp": 2100,
-        "nextLevelXp": 2500,
-        "totalXpEarned": 65600
+        "experience_points": 2100,
+        "total_optimizations": 312,
+        "successful_optimizations": 298,
+        "win_streak": 8
       },
       "created_at": "2024-01-05T08:00:00Z",
       "last_active": "2024-03-15T17:10:00Z"
@@ -75,6 +66,7 @@
       {"level": 5, "xp_required": 500, "title": "Practitioner", "benefits": ["Basic features", "Simple optimizations", "Build comparison", "Token betting"]},
       {"level": 10, "xp_required": 1500, "title": "Expert", "benefits": ["All features", "Advanced optimizations", "A/B testing"]},
       {"level": 12, "xp_required": 3000, "title": "Context Master", "benefits": ["All features", "Advanced optimizations", "A/B testing", "Team features"]},
+      {"level": 13, "xp_required": 4000, "title": "Advanced User", "benefits": ["All features", "Advanced optimizations", "A/B testing", "Team features", "Advanced analytics"]},
       {"level": 15, "xp_required": 5000, "title": "Optimization Guru", "benefits": ["All features", "Advanced optimizations", "A/B testing", "Team features", "Custom algorithms"]},
       {"level": 18, "xp_required": 8000, "title": "AI Whisperer", "benefits": ["All features", "Advanced optimizations", "A/B testing", "Team features", "Custom algorithms", "Platform insights"]},
       {"level": 20, "xp_required": 12000, "title": "Grand Master", "benefits": ["All features", "Platform management"]}
@@ -103,10 +95,10 @@
         "id": "generated_id",
         "gamification": {
           "level": 1,
-          "experiencePoints": 0,
-          "totalOptimizations": 0,
-          "successfulOptimizations": 0,
-          "winStreak": 0
+          "experience_points": 0,
+          "total_optimizations": 0,
+          "successful_optimizations": 0,
+          "win_streak": 0
         }
       }
     },

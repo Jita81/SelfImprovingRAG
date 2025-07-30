@@ -44,15 +44,13 @@ class GamificationStats:
     
     @property
     def current_level_xp(self) -> int:
-        """Get XP within current level"""
-        level_system = self._get_level_system()
+        """Get XP within current level (relative to the current level's start)"""
         current_level_threshold = self._get_level_threshold(self.level)
         return self.experience_points - current_level_threshold
     
     @property
     def next_level_xp(self) -> int:
-        """Get XP needed for next level"""
-        level_system = self._get_level_system()
+        """Get total XP needed for next level"""
         next_level_threshold = self._get_level_threshold(self.level + 1)
         current_level_threshold = self._get_level_threshold(self.level)
         return next_level_threshold - current_level_threshold
@@ -60,7 +58,6 @@ class GamificationStats:
     @property
     def xp_until_next_level(self) -> int:
         """Get XP remaining until next level"""
-        level_system = self._get_level_system()
         next_level_threshold = self._get_level_threshold(self.level + 1)
         return next_level_threshold - self.experience_points
     
@@ -155,14 +152,36 @@ class GamificationStats:
             extra_levels = level - 20
             return base_xp + (extra_levels * 1000)
         
-        return 0
+        # For levels not explicitly defined, find the closest level and interpolate
+        sorted_levels = sorted([l["level"] for l in level_system["levels"]])
+        
+        if level < sorted_levels[0]:
+            return 0
+        
+        # Find the closest levels
+        lower_level = max([l for l in sorted_levels if l <= level])
+        if lower_level == level:
+            # We should have found it above, but fallback
+            return level * 100  # Simple fallback
+        
+        # If level is between defined levels, interpolate
+        upper_level = min([l for l in sorted_levels if l > level], default=20)
+        
+        lower_xp = self._get_level_threshold(lower_level)
+        upper_xp = self._get_level_threshold(upper_level)
+        
+        # Linear interpolation
+        ratio = (level - lower_level) / (upper_level - lower_level)
+        return int(lower_xp + ratio * (upper_xp - lower_xp))
     
     def _calculate_level_from_xp(self, xp: int) -> int:
         """Calculate what level corresponds to given XP"""
         level_system = self._get_level_system()
         
         current_level = 1
-        for level_info in sorted(level_system["levels"], key=lambda x: x["level"]):
+        sorted_levels = sorted(level_system["levels"], key=lambda x: x["level"])
+        
+        for level_info in sorted_levels:
             if xp >= level_info["xp_required"]:
                 current_level = level_info["level"]
             else:
