@@ -1,0 +1,179 @@
+{
+  "users": [
+    {
+      "id": "user_001",
+      "profile": {
+        "email": "alex.chen@example.com",
+        "name": "Alex Chen",
+        "role": "developer",
+        "team": "backend",
+        "company": "TechCorp"
+      },
+      "gamification": {
+        "level": 12,
+        "experiencePoints": 2847,
+        "totalOptimizations": 156,
+        "successfulOptimizations": 142,
+        "winStreak": 7,
+        "currentLevelXp": 2847,
+        "nextLevelXp": 3000,
+        "totalXpEarned": 28470
+      },
+      "created_at": "2024-01-15T10:30:00Z",
+      "last_active": "2024-03-15T14:22:00Z"
+    },
+    {
+      "id": "user_002", 
+      "profile": {
+        "email": "sarah.martinez@example.com",
+        "name": "Sarah Martinez",
+        "role": "senior_developer",
+        "team": "frontend",
+        "company": "TechCorp"
+      },
+      "gamification": {
+        "level": 15,
+        "experiencePoints": 4250,
+        "totalOptimizations": 234,
+        "successfulOptimizations": 224,
+        "winStreak": 12,
+        "currentLevelXp": 1250,
+        "nextLevelXp": 1500,
+        "totalXpEarned": 47250
+      },
+      "created_at": "2024-01-10T09:15:00Z",
+      "last_active": "2024-03-15T16:45:00Z"
+    },
+    {
+      "id": "user_003",
+      "profile": {
+        "email": "mike.johnson@example.com", 
+        "name": "Mike Johnson",
+        "role": "team_lead",
+        "team": "platform",
+        "company": "TechCorp"
+      },
+      "gamification": {
+        "level": 18,
+        "experiencePoints": 2100,
+        "totalOptimizations": 312,
+        "successfulOptimizations": 298,
+        "winStreak": 8,
+        "currentLevelXp": 2100,
+        "nextLevelXp": 2500,
+        "totalXpEarned": 65600
+      },
+      "created_at": "2024-01-05T08:00:00Z",
+      "last_active": "2024-03-15T17:10:00Z"
+    }
+  ],
+  "level_system": {
+    "levels": [
+      {"level": 1, "xp_required": 0, "title": "Novice", "benefits": ["Basic features"]},
+      {"level": 2, "xp_required": 100, "title": "Apprentice", "benefits": ["Basic features", "Simple optimizations"]},
+      {"level": 3, "xp_required": 250, "title": "Developer", "benefits": ["Basic features", "Simple optimizations", "Build comparison"]},
+      {"level": 5, "xp_required": 500, "title": "Practitioner", "benefits": ["Basic features", "Simple optimizations", "Build comparison", "Token betting"]},
+      {"level": 10, "xp_required": 1500, "title": "Expert", "benefits": ["All features", "Advanced optimizations", "A/B testing"]},
+      {"level": 12, "xp_required": 3000, "title": "Context Master", "benefits": ["All features", "Advanced optimizations", "A/B testing", "Team features"]},
+      {"level": 15, "xp_required": 5000, "title": "Optimization Guru", "benefits": ["All features", "Advanced optimizations", "A/B testing", "Team features", "Custom algorithms"]},
+      {"level": 18, "xp_required": 8000, "title": "AI Whisperer", "benefits": ["All features", "Advanced optimizations", "A/B testing", "Team features", "Custom algorithms", "Platform insights"]},
+      {"level": 20, "xp_required": 12000, "title": "Grand Master", "benefits": ["All features", "Platform management"]}
+    ],
+    "xp_rewards": {
+      "successful_optimization": 50,
+      "win_streak_bonus": 10,
+      "first_time_feature": 25,
+      "achievement_unlock": 100,
+      "helping_teammate": 20,
+      "discovering_bug": 30,
+      "quality_improvement": 40
+    }
+  },
+  "sample_operations": [
+    {
+      "operation": "create_user",
+      "input": {
+        "email": "new.user@example.com",
+        "name": "New User",
+        "role": "developer",
+        "team": "backend",
+        "company": "TechCorp"
+      },
+      "expected_output": {
+        "id": "generated_id",
+        "gamification": {
+          "level": 1,
+          "experiencePoints": 0,
+          "totalOptimizations": 0,
+          "successfulOptimizations": 0,
+          "winStreak": 0
+        }
+      }
+    },
+    {
+      "operation": "gain_experience",
+      "input": {
+        "user_id": "user_001",
+        "points": 150,
+        "reason": "successful_optimization"
+      },
+      "expected_output": {
+        "level_up": false,
+        "new_xp": 2997,
+        "xp_until_next": 3
+      }
+    },
+    {
+      "operation": "gain_experience_with_level_up",
+      "input": {
+        "user_id": "user_001", 
+        "points": 200,
+        "reason": "achievement_unlock"
+      },
+      "expected_output": {
+        "level_up": true,
+        "old_level": 12,
+        "new_level": 13,
+        "new_xp": 47,
+        "xp_until_next": 953
+      }
+    }
+  ],
+  "test_scenarios": {
+    "user_registration": {
+      "description": "Test user registration with gamification initialization",
+      "steps": [
+        "Create new user with valid profile data",
+        "Verify initial gamification stats (level 1, 0 XP)",
+        "Verify user profile is correctly stored"
+      ]
+    },
+    "xp_gain": {
+      "description": "Test experience point gain without level up",
+      "steps": [
+        "Start with user at known XP level",
+        "Award XP for successful action", 
+        "Verify XP total updated correctly",
+        "Verify level remains unchanged"
+      ]
+    },
+    "level_up": {
+      "description": "Test level up when XP threshold is reached",
+      "steps": [
+        "Start with user near level threshold",
+        "Award XP that exceeds threshold",
+        "Verify level incremented",
+        "Verify XP properly carries over to next level"
+      ]
+    },
+    "win_streak": {
+      "description": "Test win streak tracking and bonus XP",
+      "steps": [
+        "Record successful optimization",
+        "Verify win streak incremented", 
+        "Verify bonus XP awarded for streak",
+        "Test streak reset on failure"
+      ]
+    }
+  }
+}

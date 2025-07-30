@@ -1,0 +1,282 @@
+{
+  "achievements": [
+    {
+      "id": "achievement_001",
+      "name": "First Steps",
+      "description": "Complete your first context build optimization",
+      "rarity": "common",
+      "icon": "target",
+      "xp_reward": 50,
+      "trigger": {
+        "type": "optimization_count",
+        "threshold": 1
+      },
+      "category": "getting_started"
+    },
+    {
+      "id": "achievement_002", 
+      "name": "Context Optimizer",
+      "description": "Achieve 90%+ success rate over 10 optimizations",
+      "rarity": "gold",
+      "icon": "trophy",
+      "xp_reward": 200,
+      "trigger": {
+        "type": "success_rate",
+        "threshold": 0.9,
+        "minimum_attempts": 10
+      },
+      "category": "performance"
+    },
+    {
+      "id": "achievement_003",
+      "name": "Speed Demon",
+      "description": "Complete 5 optimizations in under 30 seconds each",
+      "rarity": "silver", 
+      "icon": "zap",
+      "xp_reward": 150,
+      "trigger": {
+        "type": "speed_optimization",
+        "threshold": 30,
+        "count": 5
+      },
+      "category": "efficiency"
+    },
+    {
+      "id": "achievement_004",
+      "name": "Token Master",
+      "description": "Win 10 token bets in a row",
+      "rarity": "platinum",
+      "icon": "crown",
+      "xp_reward": 300,
+      "trigger": {
+        "type": "betting_streak",
+        "threshold": 10
+      },
+      "category": "gambling"
+    },
+    {
+      "id": "achievement_005",
+      "name": "Team Player",
+      "description": "Help 5 teammates improve their optimization success rate",
+      "rarity": "gold",
+      "icon": "users",
+      "xp_reward": 250,
+      "trigger": {
+        "type": "teammate_help",
+        "threshold": 5
+      },
+      "category": "social"
+    },
+    {
+      "id": "achievement_006",
+      "name": "Data Detective", 
+      "description": "Discover and report 3 bugs that improve system quality",
+      "rarity": "silver",
+      "icon": "search",
+      "xp_reward": 180,
+      "trigger": {
+        "type": "bug_reports",
+        "threshold": 3,
+        "quality_threshold": 0.8
+      },
+      "category": "quality"
+    },
+    {
+      "id": "achievement_007",
+      "name": "Consistency Champion",
+      "description": "Maintain a 15-day optimization streak",
+      "rarity": "diamond",
+      "icon": "calendar",
+      "xp_reward": 500,
+      "trigger": {
+        "type": "daily_streak",
+        "threshold": 15
+      },
+      "category": "engagement"
+    }
+  ],
+  "rarity_system": {
+    "common": {
+      "color": "#ffffff",
+      "multiplier": 1.0,
+      "probability": 0.6
+    },
+    "silver": {
+      "color": "#c0c0c0", 
+      "multiplier": 1.5,
+      "probability": 0.25
+    },
+    "gold": {
+      "color": "#ffd700",
+      "multiplier": 2.0,
+      "probability": 0.1
+    },
+    "platinum": {
+      "color": "#e5e4e2",
+      "multiplier": 3.0,
+      "probability": 0.04
+    },
+    "diamond": {
+      "color": "#b9f2ff",
+      "multiplier": 5.0,
+      "probability": 0.01
+    }
+  },
+  "user_achievements": [
+    {
+      "user_id": "user_001",
+      "unlocked_achievements": [
+        {
+          "achievement_id": "achievement_001",
+          "unlocked_at": "2024-01-16T10:30:00Z",
+          "xp_awarded": 50
+        },
+        {
+          "achievement_id": "achievement_002",
+          "unlocked_at": "2024-02-20T14:15:00Z", 
+          "xp_awarded": 200
+        },
+        {
+          "achievement_id": "achievement_003",
+          "unlocked_at": "2024-03-01T09:45:00Z",
+          "xp_awarded": 150
+        }
+      ],
+      "achievement_progress": [
+        {
+          "achievement_id": "achievement_004",
+          "current_progress": 7,
+          "required_progress": 10,
+          "progress_percentage": 70
+        },
+        {
+          "achievement_id": "achievement_005",
+          "current_progress": 2,
+          "required_progress": 5,
+          "progress_percentage": 40
+        }
+      ]
+    },
+    {
+      "user_id": "user_002",
+      "unlocked_achievements": [
+        {
+          "achievement_id": "achievement_001",
+          "unlocked_at": "2024-01-11T11:00:00Z",
+          "xp_awarded": 50
+        },
+        {
+          "achievement_id": "achievement_002", 
+          "unlocked_at": "2024-01-25T16:30:00Z",
+          "xp_awarded": 200
+        },
+        {
+          "achievement_id": "achievement_005",
+          "unlocked_at": "2024-02-10T13:20:00Z",
+          "xp_awarded": 250
+        },
+        {
+          "achievement_id": "achievement_007",
+          "unlocked_at": "2024-03-05T18:45:00Z",
+          "xp_awarded": 500
+        }
+      ],
+      "achievement_progress": [
+        {
+          "achievement_id": "achievement_004",
+          "current_progress": 3,
+          "required_progress": 10,
+          "progress_percentage": 30
+        }
+      ]
+    }
+  ],
+  "sample_operations": [
+    {
+      "operation": "check_achievement_unlock",
+      "input": {
+        "user_id": "user_001",
+        "event_type": "optimization_completed",
+        "event_data": {
+          "success": true,
+          "optimization_count": 1
+        }
+      },
+      "expected_output": {
+        "unlocked_achievements": ["achievement_001"],
+        "xp_awarded": 50
+      }
+    },
+    {
+      "operation": "get_user_achievements",
+      "input": {
+        "user_id": "user_001"
+      },
+      "expected_output": {
+        "unlocked_count": 3,
+        "total_xp_from_achievements": 400,
+        "rare_achievements": 2,
+        "completion_percentage": 42.8
+      }
+    },
+    {
+      "operation": "check_multiple_triggers",
+      "input": {
+        "user_id": "user_001",
+        "event_type": "betting_win",
+        "event_data": {
+          "streak": 8,
+          "tokens_won": 150
+        }
+      },
+      "expected_output": {
+        "unlocked_achievements": [],
+        "progress_updates": [
+          {
+            "achievement_id": "achievement_004",
+            "new_progress": 8,
+            "progress_percentage": 80
+          }
+        ]
+      }
+    }
+  ],
+  "test_scenarios": {
+    "first_achievement": {
+      "description": "Test unlocking first achievement",
+      "steps": [
+        "Create new user with no achievements",
+        "Trigger first optimization completion",
+        "Verify 'First Steps' achievement unlocked", 
+        "Verify XP awarded correctly"
+      ]
+    },
+    "complex_trigger": {
+      "description": "Test achievement with complex trigger conditions",
+      "steps": [
+        "Set up user with 9 successful optimizations out of 10 attempts",
+        "Complete one more successful optimization",
+        "Verify 'Context Optimizer' achievement unlocked",
+        "Verify success rate calculation is correct"
+      ]
+    },
+    "progress_tracking": {
+      "description": "Test achievement progress tracking without unlock",
+      "steps": [
+        "Set up user with partial progress toward achievement",
+        "Trigger event that advances progress",
+        "Verify progress updated correctly",
+        "Verify achievement not unlocked yet"
+      ]
+    },
+    "simultaneous_unlocks": {
+      "description": "Test unlocking multiple achievements simultaneously",
+      "steps": [
+        "Set up user near multiple achievement thresholds",
+        "Trigger event that satisfies multiple conditions",
+        "Verify all applicable achievements unlocked",
+        "Verify total XP awarded correctly"
+      ]
+    }
+  }
+}
