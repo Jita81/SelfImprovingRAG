@@ -1,0 +1,401 @@
+{
+  "users": [
+    {
+      "user_id": "user-001",
+      "name": "Alex Chen",
+      "level": 15,
+      "total_xp": 4500,
+      "success_rate": 96.2,
+      "total_optimizations": 156,
+      "successful_optimizations": 150,
+      "current_streak": 12,
+      "best_streak": 18,
+      "join_date": "2023-10-01T00:00:00Z",
+      "privacy_settings": {
+        "show_in_leaderboard": true,
+        "show_stats_to_others": true,
+        "show_achievements": true
+      },
+      "achievements": ["context_master", "streak_legend", "optimization_expert"],
+      "badges": ["Context Master", "Streak Legend"],
+      "last_active": "2023-12-07T10:30:00Z"
+    },
+    {
+      "user_id": "user-002", 
+      "name": "Sarah Johnson",
+      "level": 14,
+      "total_xp": 4200,
+      "success_rate": 94.8,
+      "total_optimizations": 142,
+      "successful_optimizations": 135,
+      "current_streak": 8,
+      "best_streak": 15,
+      "join_date": "2023-10-03T00:00:00Z",
+      "privacy_settings": {
+        "show_in_leaderboard": true,
+        "show_stats_to_others": true,
+        "show_achievements": false
+      },
+      "achievements": ["optimization_master", "consistency_king"],
+      "badges": ["Optimization Master"],
+      "last_active": "2023-12-07T09:45:00Z"
+    },
+    {
+      "user_id": "user-003",
+      "name": "Mike Rodriguez",
+      "level": 13,
+      "total_xp": 3800,
+      "success_rate": 91.5,
+      "total_optimizations": 118,
+      "successful_optimizations": 108,
+      "current_streak": 5,
+      "best_streak": 12,
+      "join_date": "2023-10-15T00:00:00Z",
+      "privacy_settings": {
+        "show_in_leaderboard": false,
+        "show_stats_to_others": false,
+        "show_achievements": true
+      },
+      "achievements": ["early_adopter", "team_player"],
+      "badges": ["Early Adopter"],
+      "last_active": "2023-12-06T15:20:00Z"
+    },
+    {
+      "user_id": "user-004",
+      "name": "Emily Watson",
+      "level": 12,
+      "total_xp": 3200,
+      "success_rate": 89.3,
+      "total_optimizations": 98,
+      "successful_optimizations": 88,
+      "current_streak": 3,
+      "best_streak": 9,
+      "join_date": "2023-11-01T00:00:00Z",
+      "privacy_settings": {
+        "show_in_leaderboard": true,
+        "show_stats_to_others": true,
+        "show_achievements": true
+      },
+      "achievements": ["rapid_learner", "dedicated_user"],
+      "badges": ["Rapid Learner"],
+      "last_active": "2023-12-07T11:15:00Z"
+    },
+    {
+      "user_id": "user-005",
+      "name": "David Kim",
+      "level": 11,
+      "total_xp": 2800,
+      "success_rate": 87.1,
+      "total_optimizations": 85,
+      "successful_optimizations": 74,
+      "current_streak": 1,
+      "best_streak": 7,
+      "join_date": "2023-11-10T00:00:00Z",
+      "privacy_settings": {
+        "show_in_leaderboard": true,
+        "show_stats_to_others": false,
+        "show_achievements": true
+      },
+      "achievements": ["newcomer", "first_success"],
+      "badges": ["Newcomer"],
+      "last_active": "2023-12-07T08:30:00Z"
+    }
+  ],
+  "leaderboard_periods": {
+    "daily": {
+      "start_date": "2023-12-07T00:00:00Z",
+      "end_date": "2023-12-07T23:59:59Z",
+      "participants": [
+        {
+          "user_id": "user-001",
+          "optimizations_today": 8,
+          "successes_today": 8,
+          "xp_gained_today": 240,
+          "daily_success_rate": 100.0,
+          "rank": 1
+        },
+        {
+          "user_id": "user-004",
+          "optimizations_today": 6,
+          "successes_today": 5,
+          "xp_gained_today": 150,
+          "daily_success_rate": 83.3,
+          "rank": 2
+        },
+        {
+          "user_id": "user-002",
+          "optimizations_today": 5,
+          "successes_today": 5,
+          "xp_gained_today": 150,
+          "daily_success_rate": 100.0,
+          "rank": 3
+        },
+        {
+          "user_id": "user-005",
+          "optimizations_today": 4,
+          "successes_today": 3,
+          "xp_gained_today": 90,
+          "daily_success_rate": 75.0,
+          "rank": 4
+        }
+      ]
+    },
+    "weekly": {
+      "start_date": "2023-12-04T00:00:00Z",
+      "end_date": "2023-12-10T23:59:59Z",
+      "participants": [
+        {
+          "user_id": "user-001",
+          "optimizations_week": 42,
+          "successes_week": 40,
+          "xp_gained_week": 1200,
+          "weekly_success_rate": 95.2,
+          "rank": 1
+        },
+        {
+          "user_id": "user-002",
+          "optimizations_week": 38,
+          "successes_week": 36,
+          "xp_gained_week": 1080,
+          "weekly_success_rate": 94.7,
+          "rank": 2
+        },
+        {
+          "user_id": "user-004",
+          "optimizations_week": 35,
+          "successes_week": 31,
+          "xp_gained_week": 930,
+          "weekly_success_rate": 88.6,
+          "rank": 3
+        },
+        {
+          "user_id": "user-005",
+          "optimizations_week": 28,
+          "successes_week": 24,
+          "xp_gained_week": 720,
+          "weekly_success_rate": 85.7,
+          "rank": 4
+        }
+      ]
+    },
+    "monthly": {
+      "start_date": "2023-12-01T00:00:00Z",
+      "end_date": "2023-12-31T23:59:59Z",
+      "participants": [
+        {
+          "user_id": "user-001",
+          "optimizations_month": 156,
+          "successes_month": 150,
+          "xp_gained_month": 4500,
+          "monthly_success_rate": 96.2,
+          "rank": 1
+        },
+        {
+          "user_id": "user-002",
+          "optimizations_month": 142,
+          "successes_month": 135,
+          "xp_gained_month": 4050,
+          "monthly_success_rate": 95.1,
+          "rank": 2
+        },
+        {
+          "user_id": "user-004",
+          "optimizations_month": 98,
+          "successes_month": 88,
+          "xp_gained_month": 2640,
+          "monthly_success_rate": 89.8,
+          "rank": 3
+        },
+        {
+          "user_id": "user-005",
+          "optimizations_month": 85,
+          "successes_month": 74,
+          "xp_gained_month": 2220,
+          "monthly_success_rate": 87.1,
+          "rank": 4
+        }
+      ]
+    },
+    "all_time": {
+      "participants": [
+        {
+          "user_id": "user-001",
+          "total_optimizations": 156,
+          "total_successes": 150,
+          "total_xp": 4500,
+          "overall_success_rate": 96.2,
+          "current_level": 15,
+          "best_streak": 18,
+          "rank": 1
+        },
+        {
+          "user_id": "user-002",
+          "total_optimizations": 142,
+          "total_successes": 135,
+          "total_xp": 4200,
+          "overall_success_rate": 94.8,
+          "current_level": 14,
+          "best_streak": 15,
+          "rank": 2
+        },
+        {
+          "user_id": "user-004",
+          "total_optimizations": 98,
+          "total_successes": 88,
+          "total_xp": 3200,
+          "overall_success_rate": 89.3,
+          "current_level": 12,
+          "best_streak": 9,
+          "rank": 3
+        },
+        {
+          "user_id": "user-005",
+          "total_optimizations": 85,
+          "total_successes": 74,
+          "total_xp": 2800,
+          "overall_success_rate": 87.1,
+          "current_level": 11,
+          "best_streak": 7,
+          "rank": 4
+        }
+      ]
+    }
+  },
+  "ranking_criteria": {
+    "default": {
+      "primary": "success_rate",
+      "secondary": "total_optimizations",
+      "tertiary": "current_streak",
+      "weights": {
+        "success_rate": 0.4,
+        "total_optimizations": 0.3,
+        "current_streak": 0.2,
+        "level": 0.1
+      }
+    },
+    "streak_focused": {
+      "primary": "current_streak",
+      "secondary": "success_rate",
+      "tertiary": "total_optimizations",
+      "weights": {
+        "current_streak": 0.5,
+        "success_rate": 0.3,
+        "total_optimizations": 0.2
+      }
+    },
+    "volume_focused": {
+      "primary": "total_optimizations",
+      "secondary": "success_rate",
+      "tertiary": "current_streak",
+      "weights": {
+        "total_optimizations": 0.5,
+        "success_rate": 0.4,
+        "current_streak": 0.1
+      }
+    }
+  },
+  "social_features": {
+    "friend_connections": [
+      {
+        "user_id": "user-001",
+        "friends": ["user-002", "user-004"],
+        "following": ["user-002", "user-004", "user-005"],
+        "followers": ["user-002", "user-004", "user-005"]
+      },
+      {
+        "user_id": "user-002",
+        "friends": ["user-001", "user-004"],
+        "following": ["user-001", "user-004"],
+        "followers": ["user-001", "user-004", "user-005"]
+      }
+    ],
+    "team_leaderboards": [
+      {
+        "team_name": "Engineering",
+        "members": ["user-001", "user-002", "user-003"],
+        "team_stats": {
+          "average_success_rate": 94.2,
+          "total_team_optimizations": 416,
+          "team_level_average": 14.0
+        }
+      },
+      {
+        "team_name": "Product",
+        "members": ["user-004", "user-005"],
+        "team_stats": {
+          "average_success_rate": 88.2,
+          "total_team_optimizations": 183,
+          "team_level_average": 11.5
+        }
+      }
+    ]
+  },
+  "historical_snapshots": [
+    {
+      "snapshot_date": "2023-12-01T00:00:00Z",
+      "period": "monthly",
+      "top_users": [
+        {"user_id": "user-001", "rank": 1, "success_rate": 96.1},
+        {"user_id": "user-002", "rank": 2, "success_rate": 94.5},
+        {"user_id": "user-004", "rank": 3, "success_rate": 89.0}
+      ]
+    },
+    {
+      "snapshot_date": "2023-11-01T00:00:00Z",
+      "period": "monthly",
+      "top_users": [
+        {"user_id": "user-001", "rank": 1, "success_rate": 95.8},
+        {"user_id": "user-002", "rank": 2, "success_rate": 94.2}
+      ]
+    }
+  ],
+  "category_leaderboards": {
+    "context_optimization": {
+      "description": "Context window optimization specialists",
+      "participants": [
+        {"user_id": "user-001", "category_score": 98.5, "category_rank": 1},
+        {"user_id": "user-002", "category_score": 96.2, "category_rank": 2},
+        {"user_id": "user-004", "category_score": 91.8, "category_rank": 3}
+      ]
+    },
+    "query_refinement": {
+      "description": "Query refinement experts",
+      "participants": [
+        {"user_id": "user-002", "category_score": 97.1, "category_rank": 1},
+        {"user_id": "user-001", "category_score": 95.9, "category_rank": 2},
+        {"user_id": "user-005", "category_score": 88.4, "category_rank": 3}
+      ]
+    }
+  },
+  "test_scenarios": {
+    "basic_ranking": {
+      "description": "Test basic leaderboard ranking calculation",
+      "input_users": ["user-001", "user-002", "user-004"],
+      "expected_ranking": ["user-001", "user-002", "user-004"],
+      "ranking_criteria": "default"
+    },
+    "privacy_filtering": {
+      "description": "Test privacy settings filtering",
+      "input_users": ["user-001", "user-002", "user-003", "user-004"],
+      "expected_visible": ["user-001", "user-002", "user-004"],
+      "expected_hidden": ["user-003"]
+    },
+    "time_period_filtering": {
+      "description": "Test weekly leaderboard filtering",
+      "period": "weekly",
+      "expected_participants": 4,
+      "expected_top_user": "user-001"
+    },
+    "composite_scoring": {
+      "description": "Test composite score calculation",
+      "user_id": "user-001",
+      "expected_components": {
+        "success_rate_score": 38.48,
+        "optimization_score": 46.8,
+        "streak_score": 24.0,
+        "level_score": 15.0
+      },
+      "expected_total_score": 124.28
+    }
+  }
+}

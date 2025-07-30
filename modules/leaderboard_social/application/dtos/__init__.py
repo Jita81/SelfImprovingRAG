@@ -1,0 +1,1 @@
+"""DTOs for leaderboard application layer"""
