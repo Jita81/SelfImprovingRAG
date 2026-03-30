@@ -2,12 +2,14 @@ from typing import Dict, List
 import os
 import json
 from src.services.llm_service import LLMService
+from src.services.knowledge_retrieval import get_knowledge_retrieval_service
 from src.models.domain import UseCaseDefinition
 
 class RAGOrchestrator:
     def __init__(self):
         """Initialize the RAG orchestrator"""
         self.llm_service = LLMService()
+        self.retrieval = get_knowledge_retrieval_service()
         self.max_cycles = 3
 
     def process_bug_report(self, bug_description: str, use_case: str, domain: str) -> Dict:
@@ -113,7 +115,9 @@ class RAGOrchestrator:
         knowledge_map_path = os.path.join(f"data/knowledge_bases/{use_case.domain}", "knowledge_map.json")
         with open(knowledge_map_path, "w") as f:
             json.dump(knowledge_map, f, indent=2)
-        
+
+        self.retrieval.invalidate(use_case.domain)
+
         return knowledge_map
 
     def create_test_cases(self, use_case: UseCaseDefinition) -> Dict:
@@ -233,7 +237,9 @@ class RAGOrchestrator:
                     # Save updated knowledge map
                     with open(knowledge_map_path, "w") as f:
                         json.dump(knowledge_map, f, indent=2)
-                        
+
+                    self.retrieval.invalidate(use_case.domain)
+
                     results["improvements_made"] += len(improvements.get("knowledge_updates", []))
                     print(f"\nSaved {len(improvements['knowledge_updates'])} improvements to knowledge base")
             else:
