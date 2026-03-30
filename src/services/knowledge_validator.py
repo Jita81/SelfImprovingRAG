@@ -1,6 +1,6 @@
 from typing import List, Dict, Any, Optional
 from datetime import timedelta
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import JsonOutputParser
 from src.models.use_case import UseCase
@@ -73,9 +73,9 @@ Be strict about technical level requirements but lenient about content coverage 
         )
         
         return prompt | ChatOpenAI(
-            model_name=self.model_name,
+            model=self.model_name,
             temperature=0,
-            request_timeout=self.timeout
+            request_timeout=self.timeout,
         ) | JsonOutputParser()
     
     def validate_content(self, content: str, use_case: UseCase) -> ValidationResult:

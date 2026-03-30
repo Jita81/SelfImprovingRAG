@@ -4,7 +4,7 @@ from fastapi import FastAPI, HTTPException, BackgroundTasks
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 import chromadb
 from duckduckgo_search import ddg
 from bs4 import BeautifulSoup

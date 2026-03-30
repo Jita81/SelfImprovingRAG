@@ -9,4 +9,4 @@ class UseCase:
     technical_level: str
     success_criteria: List[str]
     dependencies: List[str]
-    domain: str 
+    domain: str = "" 
