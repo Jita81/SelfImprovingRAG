@@ -1,6 +1,6 @@
 from typing import List, Dict, Any, Optional, Tuple
 from langchain_openai import ChatOpenAI
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from ..models.knowledge_map import KnowledgeMap, KnowledgeNode
 from ..models.domain import UseCaseDefinition, Document

@@ -144,7 +144,9 @@ def test_technical_level_validation(mock_chat, validator, good_document, use_cas
     assert 0.4 <= result.confidence_score <= 0.5, "Should have significantly reduced confidence for technical level mismatch"
     assert result.timestamp is not None, "Should have timestamp"
 
-def test_validation_history_tracking(validator, use_case, good_document, mock_openai_response):
+def test_validation_history_tracking(
+    validator, use_case, good_document, incomplete_document, mock_openai_response, mock_openai_response_incomplete
+):
     """Test that validation results are tracked in history"""
     mock_chain = MagicMock()
     mock_chain.invoke.return_value = mock_openai_response

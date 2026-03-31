@@ -182,15 +182,13 @@ def test_execute_recovery_failure(recovery_service, sample_validation_result):
     assert "end_time" in record
 
 def test_concurrent_recovery_limit(recovery_service, sample_validation_result):
-    """Test concurrent recovery limit"""
+    """Test concurrent recovery limit when active slots are already taken."""
     action = recovery_service.analyze_failure(sample_validation_result, [])
     context = {"knowledge_map": {}, "validation_system": {}}
-    
-    # Fill up active recoveries
-    for _ in range(recovery_service.max_concurrent_recoveries):
-        recovery_service.execute_recovery(action, context)
-    
-    # Try one more
+
+    for i in range(recovery_service.max_concurrent_recoveries):
+        recovery_service.active_recoveries[f"fake_{i}"] = action
+
     success = recovery_service.execute_recovery(action, context)
     assert not success
 

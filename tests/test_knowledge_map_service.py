@@ -1,9 +1,11 @@
 import pytest
 from datetime import datetime
+from unittest.mock import AsyncMock
+
 from src.models.domain import UseCaseDefinition
 from src.models.knowledge_map import KnowledgeMap, KnowledgeNode
 from src.services.knowledge_map_service import KnowledgeMapService
-from src.config import get_llm
+
 
 @pytest.fixture
 def sample_use_case():
@@ -26,7 +28,31 @@ def sample_use_case():
 
 @pytest.fixture
 def knowledge_map_service():
-    return KnowledgeMapService(get_llm())
+    llm = AsyncMock()
+    svc = KnowledgeMapService(llm)
+    svc.chain = AsyncMock()
+    svc.chain.ainvoke = AsyncMock(
+        return_value={
+            "nodes": [
+                {
+                    "id": "n1",
+                    "topic": "Python exceptions fundamentals",
+                    "description": "What exceptions are and how they propagate",
+                    "required_prerequisites": [],
+                    "validation_criteria": ["Can define an exception"],
+                },
+                {
+                    "id": "n2",
+                    "topic": "try/except error handling",
+                    "description": "Using try and except for control flow",
+                    "required_prerequisites": ["n1"],
+                    "validation_criteria": ["Can write a try/except block"],
+                },
+            ]
+        }
+    )
+    return svc
+
 
 @pytest.mark.asyncio
 async def test_knowledge_map_generation(sample_use_case, knowledge_map_service):
